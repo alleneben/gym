@@ -1,0 +1,26 @@
+@import '../../asset/scss/variables.scss';
+.container {
+    display: flex;
+    flex-direction: column;
+}
+.main {
+    // background: url('../../asset/img/bg.jpg') no-repeat;
+    // background-position: center;
+    // background-size: cover;
+    height: 100vh;
+    transition: all .5s;
+    background: #EDF2F7;
+    padding: 20px 0 0 20px;
+}
+.nav {
+    line-height: 50px;
+    background: #ffffff;
+    color: $primary;
+    font-weight: 800;
+    box-shadow:  0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    top: 0;
+    left: 0;
+    position: sticky;
+    transition: all .5s;
+    padding-left: 100px;
+}
