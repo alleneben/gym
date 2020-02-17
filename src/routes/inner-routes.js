@@ -5,8 +5,7 @@ import { DashboardContainer, NewContainer } from '../containers';
 
 
 const InnerRoutes = (props) => {
-  console.log(props);
-  
+
   return (
     <div className="inner-route">
       <Switch>

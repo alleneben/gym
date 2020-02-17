@@ -1,26 +1,37 @@
 import { useState, useEffect } from 'react';
 
+import { useStore } from '../../store/';
 
-const useForm = (initialstate, validate, submitdata) => {
+
+const useForm = (initialstate, validate, submitdata,store) => {
     const [val, setvalues] = useState(initialstate)
     const [errors, seterrors] = useState({})
     const [submitting, setsubmitting] = useState(false)
     const [invalid, setinvalid] = useState('')
-    const [rd, setrd] = useState([])
+    const [type, settype] = useState(store.type)
+    const [action, setaction] = useState(store.action)
+   
     const [opacity, setopacity] = useState(1)
 
+    const {dispatch} = useStore();
+
+
+
     useEffect(() => {
-        
+
         if(submitting){
             const noerrors = Object.keys(errors).length === 0;       
             if(noerrors){
-                submitdata()
+                
+                submitdata(val,type,action)
                 .then(rd => {
-                    setrd(rd)
+                    // console.log(rd);
                     setsubmitting(false)
                     setopacity(1)
                     if (rd.success) {
-                        
+
+                        setvalues({})
+                        dispatch({ type:type, payload:rd, action:action }); 
                     } else {
                         setinvalid(rd[0])
                     }
@@ -29,9 +40,16 @@ const useForm = (initialstate, validate, submitdata) => {
                 setsubmitting(false)
             }   
         }
-    },[submitting,submitdata,errors])
+    },[submitting,errors,opacity])
 
-    const onChange = e => setvalues({...val, [e.target.name]: e.target.value})
+    // const onChange = e => setvalues({...val, [e.target.name]: e.target.value})
+
+    const onChange = e => {
+        console.log(e.target.name);
+        
+        setvalues({...val, [e.target.name]: e.target.value})
+    }
+
 
     const handleblur = () => {
         const validationerrors = validate(val)
@@ -39,6 +57,7 @@ const useForm = (initialstate, validate, submitdata) => {
     }
 
     const handleSubmit = (e) => {
+        e.preventDefault()
         
         // const validationerrors = validate(val)
         // seterrors(validationerrors)
@@ -46,7 +65,7 @@ const useForm = (initialstate, validate, submitdata) => {
         setopacity(0.3)
     }
 
-    return { onChange, val, handleSubmit, handleblur, errors, submitting, invalid, rd,opacity }
+    return { onChange, val, handleSubmit, handleblur, errors, submitting, invalid, opacity, type, action }
 
 }
 

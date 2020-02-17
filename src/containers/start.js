@@ -1,17 +1,24 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 
 import styles from './start.module.scss';
-import { LoginForm } from '../forms';
+import { LoginForm, SignupForm } from '../forms';
 
 import { useStore } from '../store';
 
 
-const Start = () => {
+const Start = (props) => {
     const {state, dispatch} = useStore();
+
+    useEffect(() => {
+        if(!!state.loginsuccess) return  props.history.push('/app/dashboard');
+        
+    },[state])
     
     const route = () => {
-       dispatch({ type:'showlogin', payload:state.showlogin }); 
+        console.log(state);
+        let t = state.showlogin ? 'showsignup' : 'showlogin';
+        dispatch({ type:t, payload:state.showlogin }); 
     }
     
 
@@ -33,7 +40,8 @@ const Start = () => {
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores culpa eveniet sapiente. Odio id quaerat temporibus asperiores rerum dolores. Animi repellat, consectetur quo optio numquam quis qui, corporis as
                     </p>
                 </div>
-                <LoginForm />
+                {state.showlogin && <LoginForm />} 
+                {state.showsignup && <SignupForm/>}
             </div>
         </div>
     )

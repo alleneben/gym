@@ -1,12 +1,8 @@
 
 export default {
   fxns: {
-    // endpoint:'http://172.104.244.238/biz/bis/',
-    // endpoint:'http://vpos.versified.xyz/biz/bis/',
-    // endpoint:'http://172.105.90.220/biz/bis/',
-    endpoint:'http://localhost/gymbackend/',
-    // endpoint:'http://metalcraftapp.com/biz/bis/',
-    //imageurl:'http://metalcraftapp.com/biz/files/photos/',
+    // endpoint:'http://localhost/gymbackend/',
+    endpoint:'http://flexworkoutcenter.kitchencarelimited.com/server/',
     login: (params,url) => fetch(url,{method: 'post', body: params}).then(res => res.json()),
     base: (params,url) => fetch(url,{method: 'post', body: params}).then(res => res.json()),
     basicdata: (params,url) => fetch(url,{method: 'post', body: params}).then(res => res.json()),
@@ -20,19 +16,30 @@ export default {
     submit: (params,url) => fetch(url, {method: 'post', body: params}).then(res => res.json()),
   },
   utils:{
-    formatpost: (fmdata) => formatpost(fmdata)
+    formatpost: (fmdata,form) => formatpost(fmdata,form),
+    getcookie: (name) => getcookie(name)
   }
 }
 
-const formatpost = (fmdata) => {
-  var fm = new FormData();
-  for (var key in fmdata) {
+const formatpost = (fmdata,form) => {
+  let formvalues = form.props.children[1].props.children[0].props.children;
+  var fm = new FormData(),props={};
+  for (var key in formvalues) {
+    
     if(key === 'sdt' || key === 'edt'){
-      var dt = fmdata[key].toISOString();
-      fm.append(key,dt);
-    }else {
-      fm.append(key,fmdata[key]);
+      // var dt = fmdata[key].toISOString();
+      // fm.append(key,dt);
+    } else {      
+      fm.append(formvalues[key].props.id,formvalues[key].props.value);
+      props[formvalues[key].props.id]= formvalues[key].props.id.substr(formvalues[key].props.id.length-1);
     }
   }
+  fm.append("s", fmdata.s);fm.append("a", fmdata.a);fm.append('m',fmdata.m);fm.append('d',fmdata.d);
+  fm.append('dd',JSON.stringify(props))
   return fm;
+}
+const getcookie = (name) => {
+  var value = "; " + document.cookie;
+  var parts = value.split("; " + name + "=");
+  if (parts.length === 2) return parts.pop().split(";").shift();
 }
