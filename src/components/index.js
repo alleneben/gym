@@ -5,6 +5,8 @@ import { SCard, Card, CardBody, CardHeader,CardFooter } from './card';
 
 import { Button } from './button';
 
+import { DataTable } from './datatable';
+
 
 export {
     SideNav,
@@ -17,5 +19,7 @@ export {
 
     SCard,
     
-    Button
+    Button,
+
+    DataTable
 }

@@ -37,5 +37,5 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://localhost/gymbackend/"
+  "proxy": "http://gym.loc/"
 }

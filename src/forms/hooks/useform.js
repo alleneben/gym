@@ -23,7 +23,7 @@ const useForm = (initialstate, validate, submitdata,store) => {
             const noerrors = Object.keys(errors).length === 0;       
             if(noerrors){
                 
-                submitdata(val,type,action)
+                submitdata(val)
                 .then(rd => {
                     // console.log(rd);
                     setsubmitting(false)
@@ -42,14 +42,7 @@ const useForm = (initialstate, validate, submitdata,store) => {
         }
     },[submitting,errors,opacity])
 
-    // const onChange = e => setvalues({...val, [e.target.name]: e.target.value})
-
-    const onChange = e => {
-        console.log(e.target.name);
-        
-        setvalues({...val, [e.target.name]: e.target.value})
-    }
-
+    const onChange = e => setvalues({...val, [e.target.name]: e.target.value})
 
     const handleblur = () => {
         const validationerrors = validate(val)

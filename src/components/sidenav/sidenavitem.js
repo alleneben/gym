@@ -9,7 +9,6 @@ const SideNavItems = ({ path, linktext,icon }) => {
 
   return (
     <li>
-      
       <NavLink to={path}>
       <FontAwesomeIcon
         style={{ fontSize: "1.1rem", marginRight: ".3rem" }}

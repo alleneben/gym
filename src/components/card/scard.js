@@ -1,24 +1,26 @@
 import React from 'react';
 
+import utilstyle from '../../asset/scss/util.module.scss';
 
-const SCard = ({ children, title, footer,styles, cstyles }) => {
+class SCard extends React.Component {
    
-//  console.log(React.Children.toArray(children));
- 
 
-  return(
-      <div className={styles.card} style={cstyles}>
-          <div className={styles.title}>
-            { title }
+ 
+  render(){
+      return(
+          <div className={utilstyle.card}>
+              <div className={utilstyle.cardtitle}>
+                { this.props.title }
+              </div>
+              <div className={utilstyle.cardbody}>
+                { this.props.children }
+              </div>
+              <div className={utilstyle.cardfooter}>
+              </div>
           </div>
-          <div className={styles.cardbody}>
-            { React.Children.toArray(children) }
-          </div>
-          <div className={styles.cardfooter}>
-            { footer }
-          </div>
-      </div>
-  )
+    )
+  }
+
 }
 
 
