@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useReducer} from 'react';
-import { faQrcode, faCalendarWeek, faSlidersH, faEnvelope, faBars, faTimes, faUsers, faRunning } from "@fortawesome/free-solid-svg-icons";
+import { faQrcode,faUsers, faUserPlus /*faCalendarWeek, faSlidersH, faEnvelope, faBars, faTimes, faRunning*/ } from "@fortawesome/free-solid-svg-icons";
 
 
 
@@ -44,8 +44,8 @@ const reducer = (state, action) => {
                         path:'/app/new',
                         icon: faUsers,
                         submenu:[
-                            {rid:0,nam:'+ New',typ:'updatedom', pay:'pay',act:'new',col:'primary'},
-                            {rid:1,nam:'List',typ:'updatedom', pay:'pay',act:'list',col:'danger'}
+                            {rid:0,nam:'New',typ:'updatedom', pay:'pay',act:'new',col:'primary',ico: faUserPlus},
+                            {rid:1,nam:'Members',typ:'updatedom', pay:'pay',act:'list',col:'danger', ico: faUsers}
                         ]
                     }
                 ]
@@ -60,6 +60,12 @@ const reducer = (state, action) => {
             return {
                 ...state,
                 updatedom: action.action,
+                data: action.payload
+            }
+        case 'open':
+            return {
+                ...state,
+                
             }
         default:
             throw new Error(`Unhandled action type: ${action.type}`);

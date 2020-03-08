@@ -29,10 +29,11 @@ const useForm = (initialstate, validate, submitdata,store) => {
                     setsubmitting(false)
                     setopacity(1)
                     if (rd.success) {
-
+                                               
                         setvalues({})
                         dispatch({ type:type, payload:rd, action:action }); 
                     } else {
+                        console.log(rd)
                         setinvalid(rd[0])
                     }
                 },err => {setsubmitting(false);console.log(err)})

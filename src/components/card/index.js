@@ -4,7 +4,7 @@ import CardFooter from './cardfooter';
 import CardHeader from './cardheader';
 
 import SCard from './scard';
-
+import StatsCard from './statscard';
 
 export {
     Card,
@@ -12,5 +12,6 @@ export {
     CardFooter,
     CardHeader,
 
-    SCard
+    SCard,
+    StatsCard
 }

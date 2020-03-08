@@ -31,9 +31,9 @@
 .card {
     background: $pure-white;
     height: auto;
-    padding: 20px;
     font-weight: 700;
     line-height: 10px;
+    padding: 20px;
     font-size: 12px;
     border-radius: 5px;
     overflow-x: auto;
@@ -43,6 +43,7 @@
         display: flex;
         align-items: center;
         margin-bottom: 2rem;
+        padding-left: 1rem;
         font-size: 1.2rem;
         font-weight: 200;
         i {
@@ -55,10 +56,45 @@
     .cardfooter {
         display: flex;
         justify-content: flex-end;
-        margin-top: 5px; 
+        // margin-top: 5px;
     }
 }
 
+.scard {
+    padding: 1rem 0;
+}
+.statscard {
+    display: flex;
+    flex-direction: column;
+    width: 250px;
+    height: auto;
+    margin: 0 20px 20px 0;
+    padding: 1rem 0;
+    padding-bottom: 0;
+    overflow-y: hidden;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+
+    .cardtitle {
+        color: #767c8a;
+        font-weight: 500;
+        font-size: 1rem;
+    }
+    .statscardbody {
+        flex: 0.6;
+        padding: 0 0.7rem 1rem 0.5rem;
+        font-size: 1.5rem;
+        font-weight: 300;
+    }
+    .cardfooter {
+        flex: 0.4;
+        padding: 0.8rem;
+        justify-content: center;
+        align-items: center;
+        color: #42464f;
+        cursor: pointer;
+    }
+
+}
 .datatable {
     border-collapse: collapse;
     thead {
@@ -71,8 +107,9 @@
             color: #424242;
         }
     }
-    td {
-        padding: .4rem;
+
+    .td {
+        padding: .5rem;
         font-size: 14px;
         font-weight: 400;
         color: $bg-gray-800;
@@ -84,10 +121,10 @@
         // cursor: pointer;
     }
     #status span{
-        background: #bedbbe;
+        background: #e3fbeb;
         border-radius: 3px;
-        padding: 3px; 
-        color: #08db08;
+        padding: 5px; 
+        color: #2f503d;
         font-weight: 300;
         font-size: 12px;
         text-transform: uppercase;
@@ -95,11 +132,15 @@
     #action span{
         background: #bedbbe;
         border-radius: 3px;
-        padding: 3px; 
+        padding: 5px; 
         font-weight: 300;
         font-size: 12px;
         text-transform: uppercase;
         cursor: pointer;
+    
+    }
+    span {
+        margin: 5px;
     }
 }
 
@@ -111,6 +152,6 @@
     }
     .card {
         width: 700px !important;
-        margin-left: 100px;
+        // margin-left: 100px;
     }
 }

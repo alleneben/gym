@@ -24,7 +24,7 @@ const MainContainer = (props) => {
                     props.match.path === '/app/dashboard' ? '' :
                     state.menu && 
                     state.menu.map((d,k) =>
-                        d.submenu && d.submenu.map((s,y) =><Button btntext={s.nam} styles={`${btnstyles.btn} ${btnstyles[s.col]}`} onclick={()=>btnaction(s.typ,s.pay,s.act)}/>)
+                        d.submenu && d.submenu.map((s,y) =><Button btntext={s.nam} ico={s.ico} styles={`${btnstyles.btn} ${btnstyles[s.col]}`} onclick={()=>btnaction(s.typ,s.pay,s.act)}/>)
                     ) 
                 }
                 <InnerRoutes />

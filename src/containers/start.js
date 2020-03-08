@@ -15,7 +15,7 @@ const Start = (props) => {
         flds:[{n:'fnm',f:'t'},{n:'snm',f:'t'},{n:'tel',f:'t'},{n:'had',f:'t'},{n:'eml',f:'t'}],
         dbcfg:{s:'controller',a:'findt',m:'l',d:'members_fn', load:true,props:{'rid':'n','nam':'t'}},
         params: {rid:'',nam:''},
-        actions:['Details']
+        actions:['details','edit']
     }
 
     useEffect(() => {
@@ -44,7 +44,7 @@ const Start = (props) => {
         dispatch({ type:t, payload:state.showlogin }); 
     }
     
-
+    
     return(
         <div className={styles.container}>
             <nav className={styles.nav}>

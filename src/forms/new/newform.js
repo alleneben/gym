@@ -50,29 +50,7 @@ const NewForm = () => {
         const sno = buildield('Student ID Card No','snot','text','','tt',onChange,val.snot || '',true,styles);
         const nre = buildield('Residence Status','nren','','','cb',onChange,val.nren || '',true,styles,{},combo().lcs.residentialstatus);
 
-        // const dtc = buildield('Your Profession','pfi','date','','tt',onChange,val.pfi || '',true,styles);
-
-
-    //     return <SCard title={'New Member'} footer={<Button btntext='Submit' disable={submitting} styles={`${utilstyle.btn} ${utilstyle.btnprimary}`} onclick={handleSubmit} />}  styles={utilstyle} cstyles={{width: 280,opacity: opacity}}>
-    //     <fieldset>
-    //         <legend>Personal Details</legend>
-    //         { snm }{ fnm } { sex } { age } { had } { eml }
-    //     </fieldset>
-    //     <fieldset>
-    //         <legend>Personal Details Cont</legend>
-    //         { tel } { mst } { sts } { ecn } { etl } 
-    //     </fieldset>
-        // {/* {wos === 'w' ? <fieldset>
-        //     <legend>Work Details</legend>
-        //     { tel } { mst } { sts } { ecn } { etl } 
-        // </fieldset> 
-        // : wos === 's' ?
-        // <fieldset>
-        //     <legend>Student Details</legend>
-        //     { tel } { mst } { sts } { ecn } { etl } 
-        // </fieldset>
-        // :''} */}
-    // </SCard>;
+  
         let formui = <Card className={utilstyle.card} submittingstyle={opacity}>
             <CardHeader className={utilstyle.cardheader}>
                 <h5 style={{color:"red"}}>{ invalid.em ? invalid.em : invalid}</h5>

@@ -2,6 +2,7 @@ import React from 'react';
 
 import { NewForm } from '../../forms';
 import { DataTable, SCard } from '../../components';
+import { Details } from '../'
 
 import { useStore } from '../../store';
 
@@ -14,14 +15,25 @@ const NewContainer = () => {
         flds:[{n:'fnm',f:'t'},{n:'snm',f:'t'},{n:'tel',f:'t'},{n:'had',f:'t'},{n:'eml',f:'t'}],
         dbcfg:{s:'controller',a:'find',m:'l',d:'members_fn', load:true,props:{'rid':'n','nam':'t'}},
         params: {rid:'',nam:''},
-        actions:['Details']
+        actions:['details','edit']
     }
-    
+    const renderdom = (key) => {
+        
+        let cmp = {
+            list:<SCard><DataTable  tbcfg={tbcfg} /></SCard>,
+            edit: 'edit',
+            details: <Details />,
+            new: <NewForm />,
+            undefined: <Details />
+        }
+
+        return cmp[key];
+    }
 
     return (
-        <>
-            { state.updatedom === 'list' ? <SCard><DataTable  tbcfg={tbcfg} /></SCard> : <NewForm /> }
-        </>
+        <div>
+            { renderdom(state.updatedom) }
+        </div>
     )
 }
 

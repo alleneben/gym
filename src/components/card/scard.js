@@ -1,25 +1,23 @@
 import React from 'react';
 
-import utilstyle from '../../asset/scss/util.module.scss';
+import styles from '../../asset/scss/util.module.scss';
 
-class SCard extends React.Component {
-   
+const SCard = (props) => {
+  
 
  
-  render(){
-      return(
-          <div className={utilstyle.card}>
-              <div className={utilstyle.cardtitle}>
-                { this.props.title }
-              </div>
-              <div className={utilstyle.cardbody}>
-                { this.props.children }
-              </div>
-              <div className={utilstyle.cardfooter}>
-              </div>
-          </div>
-    )
-  }
+    return(
+      <div className={`${styles.card} ${styles.scard}`} >
+        <div className={styles.cardtitle}>
+          { props.title }
+        </div>
+        <div className={styles.cardbody}>
+          { props.children }
+        </div>
+        <div className={styles.cardfooter}>
+        </div>
+      </div>
+  )
 
 }
 

@@ -3,22 +3,24 @@ import React,{ useEffect, useState } from 'react';
 import styles from '../../asset/scss/util.module.scss';
 import './datatable.css';
 
-import { api } from '../../store';
+import { api, useStore } from '../../store';
 
-
-const DataTable  = ({ tbcfg }) => {
+let col=0;
+const DataTable  = ({ tbcfg, re }) => {
     const [data, setdata] = useState([])
+    const { dispatch } = useStore();
 
+    
     useEffect(() => {
         let tbl = document.getElementById('tbl')
-
-
         tbl.classList.add('loading');
         
         const params  = api.utils.formatpostsearch(tbcfg);
         api.fxns.submit(params,api.fxns.endpoint)
         .then(rd => {
-            tbl.classList.remove('loading');
+            
+                tbl.classList.remove('loading');
+        
             if(rd.success){
                 setdata(rd.sd)                
             } else {
@@ -27,10 +29,13 @@ const DataTable  = ({ tbcfg }) => {
         },err => {
             tbl.classList.remove('loading');
             console.log(err)
-        })
-        
+        })  
     },[])
 
+
+    const trigger = (a,rec) => { 
+        dispatch({type:'updatedom', payload:rec, action:a});
+    }
     return (
         <table className={styles.datatable} id="tbl" >
             <thead>
@@ -54,19 +59,19 @@ const DataTable  = ({ tbcfg }) => {
                     
                   return (
                     <tr key={key}>
-                        <td>{key+1}</td>
+                        <td data-column={tbcfg.header[0]} className={styles.td}>{key+1}</td>
                         {
                             tbcfg.flds.map((dd,kk) => {
                                 var val = dd.f === 'd' ? parseFloat(item[dd.n]).toFixed(2) : item[dd.n];
+                                col = kk + 1
                                 return (
-                                    <td key={kk}>{val}</td>
+                                    <td key={kk} data-column={tbcfg.header[kk+1]} className={styles.td}>{val}</td>
                                 )
                             })
                         }
-                        <td id={styles.status}><span>Enabled</span></td>
-                        <td id={styles.action}>
-                            { tbcfg.actions.map((a,ak) => <span key={ak}>{a}</span>)}
-                            
+                        <td id={styles.status} data-column={tbcfg.header[col+1]}><span>Enabled</span></td>
+                        <td id={styles.action} data-column={tbcfg.header[col+2]}>
+                            { tbcfg.actions.map((a,ak) => <span key={ak} onClick={() => trigger(a,item)}>{a}</span>)}
                         </td>
                     </tr>
                   );

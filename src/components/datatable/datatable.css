@@ -1,6 +1,5 @@
-table {
-    /* border: 1px solid #ccc; */
-    /* border-collapse: collapse; */
+/* table {
+
     table-layout: fixed;
     width: 100%;
   }
@@ -9,12 +8,9 @@ table {
     margin: .5em 0 .75em;
   }
   table tr {
-    /* border: 1px solid #ddd; */
     padding: .35em;
   }
-  /* table tr:nth-child(even) {
-    background: #f8f8f8;  
-  } */
+
   table th,
   table td {
     padding: .625em;
@@ -31,7 +27,7 @@ table {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-  }
+  } */
   table.loading tbody:after {
     position: absolute;
     top: 0;

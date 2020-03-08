@@ -1,11 +1,13 @@
 import { SideNav } from './sidenav';
 
 import { Field } from './field';
-import { SCard, Card, CardBody, CardHeader,CardFooter } from './card';
+import { SCard, Card, CardBody, CardHeader,CardFooter,StatsCard } from './card';
 
 import { Button } from './button';
 
 import { DataTable } from './datatable';
+
+import { Modal } from './modal';
 
 
 export {
@@ -18,8 +20,11 @@ export {
     CardHeader,
 
     SCard,
+    StatsCard,
     
     Button,
 
-    DataTable
+    DataTable,
+
+    Modal
 }

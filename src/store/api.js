@@ -1,8 +1,8 @@
 
 export default {
   fxns: {
-    endpoint:'http://gym.loc/service/',
-    // endpoint:'http://flexworkoutcenter.kitchencarelimited.com/server/',
+    // endpoint:'http://gym.loc/service/',
+    endpoint:'http://flexworkoutcenter.kitchencarelimited.com/server/',
     login: (params,url) => fetch(url,{method: 'post', body: params}).then(res => res.json()),
     base: (params,url) => fetch(url,{method: 'post', body: params}).then(res => res.json()),
     basicdata: (params,url) => fetch(url,{method: 'post', body: params}).then(res => res.json()),
@@ -39,7 +39,8 @@ const formatpost = (fmdata,form) => {
     }
   }
   fm.append("s", fmdata.s);fm.append("a", fmdata.a);fm.append('m',fmdata.m);fm.append('d',fmdata.d);
-  fm.append('dd',JSON.stringify(props))
+  fm.append('dd',JSON.stringify(props));
+
   return fm;
 }
 

@@ -21,6 +21,7 @@ code {
 .inner-route {
   margin: 10px 20px 20px 0;
 }
+
 fieldset {
   border-color: #eff3f6;
   border-width: 1px;
@@ -40,6 +41,7 @@ fieldset {
   padding: 0 2px;
   color: #4a5568;
 }
+
 /* .pages {
   scroll-behavior: smooth;
 } */

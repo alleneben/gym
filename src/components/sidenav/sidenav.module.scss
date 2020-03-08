@@ -42,16 +42,16 @@
     position: absolute;
     cursor: pointer;
     background: $primary;
-    border-radius: 3px;
+    border-radius: 3px; 
 }
 label {
     position: sticky;
     left: 0;
     top: 0;
-    z-index: 22222;
+    z-index: 5;
 }
 label #btn {
-    z-index: 1111;
+    z-index: 1;
     left: 40px;
     top: 12px;
     font-size: 35px;
@@ -61,7 +61,7 @@ label #btn {
 }
 
 label #cancel {
-    z-index: 1111;
+    z-index: 1;
     left: -195px;
     top: 10px;
     font-size: 30px;
