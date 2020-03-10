@@ -1,11 +1,10 @@
 import React, { useEffect } from 'react';
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faComments, faMoneyBillAlt } from "@fortawesome/free-regular-svg-icons";
+import { faMoneyBillAlt } from "@fortawesome/free-regular-svg-icons";
 
-
-import styles from './modal.module.scss';
 import formstyles from '../../asset/scss/forms.module.scss'
+import styles from './modal.module.scss';
 
 
 
@@ -23,8 +22,8 @@ const Modal = (props) => {
     }
 
     return(
-        <div>
-            <div onMouseDown={handlemousedown} className={`${styles.overlaycontainer} ${styles[modalclass]}`}>
+        
+            <div  className={`${styles.overlaycontainer} ${styles[modalclass]}`}>
                 <div className={`${styles.content} ${styles[modalclass]}` }>
                     <div className={styles.header}>
                         <div>
@@ -36,7 +35,7 @@ const Modal = (props) => {
                             </h4>
                             <span className={styles.lead}></span>
                         </div>
-                        <span onClick={handlemousedown} className={styles.close}>
+                        <span onClick={handlemousedown} className={styles.close} onMouseDown={handlemousedown}>
                             &times;
                         </span>
                     </div>
@@ -44,12 +43,12 @@ const Modal = (props) => {
                         { children }
                     </div>
                     <div className={styles.footer}>
-                        <button className={formstyles.button}>Cancel</button>
+                        <button className={formstyles.button} onMouseDown={handlemousedown}>Cancel</button>
                         <button className={formstyles.button}>Submit</button>
                     </div>
                 </div>
             </div>
-        </div>
+        
     )
 }
 

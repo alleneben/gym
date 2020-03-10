@@ -7,7 +7,7 @@ import { Button } from './button';
 
 import { DataTable } from './datatable';
 
-import { Modal } from './modal';
+import { Modal, } from './modal';
 
 
 export {
@@ -26,5 +26,6 @@ export {
 
     DataTable,
 
-    Modal
+    Modal,
+    
 }

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMoneyBill } from "@fortawesome/free-solid-svg-icons";
@@ -63,7 +63,6 @@ const Details = () => {
                     </div>
                 </div>
             </div>
-
             <div className={styles.overview}>
                 <h1>Overview</h1>
                 <div className={styles.stats}>
@@ -85,6 +84,7 @@ const Details = () => {
                     <DataTable tbcfg={tbcfg} re={true}/>
                 </SCard>
             </div>
+            
             <Modal status={open} onhide={openmodal} title='Payment'>
                 <Field label={''} id={'amt'} type={'text'} placeholder={'Amount'} fieldtype={'tt'} onchange={onChange} value={val.amt} required={true} styles={formstyles} cstyles={{}} cb={'cb'} disabled={false}/>
             </Modal>
