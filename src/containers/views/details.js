@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMoneyBill } from "@fortawesome/free-solid-svg-icons";
 
-import  { SCard, StatsCard, DataTable, Modal, Field } from '../../components';
+import  { SCard, StatsCard, DataTable, Modal, Field, CreditCard } from '../../components';
 import styles from './details.module.scss';
 import formstyles from '../../asset/scss/forms.module.scss'
 
@@ -17,7 +17,6 @@ const Details = () => {
 
     const [open, setopen] = useState(false)
 
-    
     const tbcfg = {
         header:['S/No','Firstname','Surname','Phone','Address','Email','Status'],
         flds:[{n:'fnm',f:'t'},{n:'snm',f:'t'},{n:'tel',f:'t'},{n:'had',f:'t'},{n:'eml',f:'t'}],
@@ -32,12 +31,12 @@ const Details = () => {
 
     }
 
-    const { onChange, val, handleSubmit, submitting,invalid, opacity } = useForm({s:'controller',a:'save',d:'newmember_fn',m:'l'},validateform,submitdata,{type:'newuser',action:'newuser'})
+    const { onChange, val, handleSubmit, submitting,invalid, opacity } = useForm({s:'controller',a:'save',d:'newmember_fn',data:data,m:'l'},validateform,submitdata,{type:'newuser',action:'newuser'})
 
     
-    function submitdata(fmvalues){
+    function submitdata(bp){
         try {   
-            const params  = api.utils.formatpost(fmvalues,'form');
+            const params  = api.utils.formatpost(bp,val);
             return api.fxns.submit(params,api.fxns.endpoint)
         } catch (error) {
             
@@ -85,8 +84,10 @@ const Details = () => {
                 </SCard>
             </div>
             
-            <Modal status={open} onhide={openmodal} title='Payment'>
-                <Field label={''} id={'amt'} type={'text'} placeholder={'Amount'} fieldtype={'tt'} onchange={onChange} value={val.amt} required={true} styles={formstyles} cstyles={{}} cb={'cb'} disabled={false}/>
+            <Modal status={open} onhide={openmodal} title='Payment' handleSubmit={handleSubmit}>
+                <CreditCard data={data}>
+                    <Field label={''} id={'amt'} type={'text'} placeholder={'Amount'} fieldtype={'tt'} onchange={onChange} value={val.amt} required={true} styles={formstyles} cstyles={{}} cb={'cb'} disabled={false}/>
+                </CreditCard>
             </Modal>
         </>
     )

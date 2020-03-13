@@ -18,10 +18,10 @@ const LoginForm = () => {
     const { onChange, val, handleSubmit,invalid,opacity } = useForm({s:'controller',a:'auth',d:'security_login',m:'l'},validateform,submitdata,{type:'loginsuccess',action:'loginsuccess'})
 
 
-    function submitdata(fmvalues){
+    function submitdata(bp){
         try {   
 
-            const params  = api.utils.formatpost(fmvalues,form);
+            const params  = api.utils.formatpost(bp,form);
             return api.fxns.submit(params,api.fxns.endpoint)
         } catch (error) {
             

@@ -5,6 +5,7 @@ import CardHeader from './cardheader';
 
 import SCard from './scard';
 import StatsCard from './statscard';
+import CreditCard from './creditcard';
 
 export {
     Card,
@@ -13,5 +14,6 @@ export {
     CardHeader,
 
     SCard,
-    StatsCard
+    StatsCard,
+    CreditCard
 }

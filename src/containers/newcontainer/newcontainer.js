@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { NewForm } from '../../forms';
-import { DataTable, SCard } from '../../components';
+import { DataTable, SCard, CreditCard } from '../../components';
 import { Details } from '../'
 
 import { useStore } from '../../store';
@@ -24,9 +24,9 @@ const NewContainer = () => {
             edit: 'edit',
             details: <Details />,
             new: <NewForm />,
-            undefined: <Details />
+            bill: <CreditCard />,
+            undefined: <CreditCard />
         }
-
         return cmp[key];
     }
 

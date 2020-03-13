@@ -1,7 +1,7 @@
 import { SideNav } from './sidenav';
 
 import { Field } from './field';
-import { SCard, Card, CardBody, CardHeader,CardFooter,StatsCard } from './card';
+import { SCard, Card, CardBody, CardHeader,CardFooter,StatsCard, CreditCard } from './card';
 
 import { Button } from './button';
 
@@ -21,6 +21,7 @@ export {
 
     SCard,
     StatsCard,
+    CreditCard,
     
     Button,
 

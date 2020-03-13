@@ -9,7 +9,7 @@
     // background-size: cover;
     height: 100vh;
     transition: all .5s;
-    background: #EDF2F7;
+    background: #F4F5F7;
     padding: 20px 0 0 20px;
     // display: flex;
 
@@ -26,4 +26,9 @@
     position: sticky;
     transition: all .5s;
     padding-left: 100px;
+}
+.actions {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
 }

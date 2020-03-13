@@ -13,7 +13,7 @@
         padding: 10px;
         border-radius: 3px;
         border: none;
-        background: $gray-200;
+        background: $bg-gray-fields;
         color: $gray-600;
         margin: 5px 0 15px 0;
         width: 300px;
@@ -23,7 +23,7 @@
         box-sizing: border-box;
         background: $pure-white;
         border: 1px solid $gray-300;
-        outline: none;
+        outline: 0;
     }
     ::placeholder {
         color: $gray-600;

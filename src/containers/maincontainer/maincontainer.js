@@ -15,6 +15,11 @@ const MainContainer = (props) => {
         dispatch({type:t, payload:p, action:a})
     }
 
+    const actions = (state) => {
+        let btns = state.menu.map((d,k) => d.submenu && d.submenu.map((s,y) =><Button btntext={s.nam} ico={s.ico} styles={`${btnstyles.btnoutline}`} onclick={()=>btnaction(s.typ,s.pay,s.act)}/>)) 
+        
+        return btns
+    }
     return(
         <div className={styles.container}>
             <SideNav state={state}/>
@@ -22,11 +27,13 @@ const MainContainer = (props) => {
             <main className={styles.main}>
                 {
                     props.match.path === '/app/dashboard' ? '' :
-                    state.menu && 
-                    state.menu.map((d,k) =>
-                        d.submenu && d.submenu.map((s,y) =><Button btntext={s.nam} ico={s.ico} styles={`${btnstyles.btn} ${btnstyles[s.col]}`} onclick={()=>btnaction(s.typ,s.pay,s.act)}/>)
-                    ) 
+                    state.menu && <div className={styles.actions}> {actions(state)} </div>
                 }
+                {/* <div className={styles.actions}>
+                    <Button btntext='Edit' styles={btnstyles.btnoutline}/>
+                    <Button btntext='Update' styles={btnstyles.btnoutline}/>
+                    <Button btntext='View' styles={btnstyles.btnoutline}/>
+                </div> */}
                 <InnerRoutes />
             </main>
         </div>

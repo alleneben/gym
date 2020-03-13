@@ -16,35 +16,43 @@ export default {
     submit: (params,url) => fetch(url, {method: 'post', body: params}).then(res => res.json()),
   },
   utils:{
-    formatpost: (fmdata,form) => formatpost(fmdata,form),
-    formatpostfieldset: (fmdata,form) => formatpostfieldset(fmdata,form),
+    formatpost: (bp,form) => formatpost(bp,form),
+    formatpostfieldset: (bp,form) => formatpostfieldset(bp,form),
     formatpostsearch: (data) => formatpostsearch(data),
     getcookie: (name) => getcookie(name)
   }
 }
 
-const formatpost = (fmdata,form) => {
-  // console.log(form.props.children[1].props.children[0].props.children);
+const formatpost = (bp,form) => {
+  console.log(form);
+  console.log(bp);
   
-  let formvalues = form.props.children[1].props.children[0].props.children;
   var fm = new FormData(),props={};
-  for (var key in formvalues) {
-    
-    if(key === 'sdt' || key === 'edt'){
-      // var dt = fmdata[key].toISOString();
-      // fm.append(key,dt);
-    } else {      
-      fm.append(formvalues[key].props.id,formvalues[key].props.value);
-      props[formvalues[key].props.id]= formvalues[key].props.id.substr(formvalues[key].props.id.length-1);
+  if(form.data){
+    fm.append('amt',bp.amt);
+    fm.append('rid',bp.data.rid)
+    props = {'rid':'n','amt':'n'}
+  } else {
+    let formvalues = form.props.children[1].props.children[0].props.children;
+    for (var key in formvalues) {
+      if(key === 'sdt' || key === 'edt'){
+        // var dt = bp[key].toISOString();
+        // fm.append(key,dt);
+      } else {      
+        fm.append(formvalues[key].props.id,formvalues[key].props.value);
+        props[formvalues[key].props.id]= formvalues[key].props.id.substr(formvalues[key].props.id.length-1);
+      }
     }
   }
-  fm.append("s", fmdata.s);fm.append("a", fmdata.a);fm.append('m',fmdata.m);fm.append('d',fmdata.d);
+
+  
+  fm.append("s", bp.s);fm.append("a", bp.a);fm.append('m',bp.m);fm.append('d',bp.d);
   fm.append('dd',JSON.stringify(props));
 
   return fm;
 }
 
-const formatpostfieldset = (fmdata,form) => {
+const formatpostfieldset = (bp,form) => {
   // console.log(form.props.children[1].props.children[0].props.children);
 
   
@@ -63,17 +71,7 @@ const formatpostfieldset = (fmdata,form) => {
     })
   })
 
-  // for (var key in formvalues) {
-    
-  //   if(key === 'sdt' || key === 'edt'){
-  //     // var dt = fmdata[key].toISOString();
-  //     // fm.append(key,dt);
-  //   } else {      
-  //     fm.append(formvalues[key].props.id,formvalues[key].props.value);
-  //     props[formvalues[key].props.id]= formvalues[key].props.id.substr(formvalues[key].props.id.length-1);
-  //   }
-  // }
-  fm.append("s", fmdata.s);fm.append("a", fmdata.a);fm.append('m',fmdata.m);fm.append('d',fmdata.d);
+  fm.append("s", bp.s);fm.append("a", bp.a);fm.append('m',bp.m);fm.append('d',bp.d);
   fm.append('dd',JSON.stringify(props))
   return fm;
 }
@@ -84,7 +82,7 @@ const formatpostsearch = (tbcfg) => {
   var fm = new FormData()
   for (var key in params) {    
     if(key === 'sdt' || key === 'edt'){
-      // var dt = fmdata[key].toISOString();
+      // var dt = bp[key].toISOString();
       // fm.append(key,dt);
     } else {      
       fm.append(key,params[key]);

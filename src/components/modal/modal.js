@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMoneyBillAlt } from "@fortawesome/free-regular-svg-icons";
@@ -10,15 +10,14 @@ import styles from './modal.module.scss';
 
 const Modal = (props) => {
 
-    const { status, onhide, children, title } = props
+    const { status, onhide, children, title,handleSubmit } = props
 
 
     let modalclass = status ? 'show' : 'hide';
 
     const handlemousedown = e => {
         onhide()
-        e.stopPropagation();
-        
+        e.stopPropagation(); 
     }
 
     return(
@@ -44,7 +43,7 @@ const Modal = (props) => {
                     </div>
                     <div className={styles.footer}>
                         <button className={formstyles.button} onMouseDown={handlemousedown}>Cancel</button>
-                        <button className={formstyles.button}>Submit</button>
+                        <button className={formstyles.button} onClick={handleSubmit}>Submit</button>
                     </div>
                 </div>
             </div>
