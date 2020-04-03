@@ -6,17 +6,13 @@ import { faQrcode,faUsers, faUserPlus, faMoneyBillWaveAlt /*faCalendarWeek, faSl
 
 const StoreContext = createContext();
 const initialstate = {
-    showlogin: true,
-    showsignup: false,
+    showlogin: false,
+    showsignup: true,
     loginsuccess: false
 };
 
 const reducer = (state, action) => {
-    // console.log(state);
-    // console.log(action);
-    
-    
-    
+
     switch (action.type) {
         case 'showlogin':
             return {
@@ -77,11 +73,6 @@ const reducer = (state, action) => {
                 ...state,
                 openmodal: action.payload.success ? false : true,
                 reload : action.payload.success ? false : true,
-            }
-        case 'all':
-            return {
-                ...state,
-                ...state
             }
         default:
             throw new Error(`Unhandled action type: ${action.type}`);
