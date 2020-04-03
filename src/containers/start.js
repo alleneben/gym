@@ -53,7 +53,7 @@ const Start = (props) => {
                     <li>Products</li>
                     <li>Company</li>
                 </ul>
-                <button className={styles.login} onClick={() => route()}>{state.showlogin ? 'Sign Up' : 'Sign In'}</button>
+                {/* <button className={styles.login} onClick={() => route()}>{state.showlogin ? 'Sign Up' : 'Sign In'}</button> */}
             </nav>
             {/* <SCard title="Members">
                 <DataTable tbcfg={tbcfg} />

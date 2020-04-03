@@ -6,8 +6,8 @@ import { faQrcode,faUsers, faUserPlus, faMoneyBillWaveAlt /*faCalendarWeek, faSl
 
 const StoreContext = createContext();
 const initialstate = {
-    showlogin: false,
-    showsignup: true,
+    showlogin: true,
+    showsignup: false,
     loginsuccess: false
 };
 
