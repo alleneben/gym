@@ -73,11 +73,14 @@ const reducer = (state, action) => {
                 openmodal: action.payload
             }
         case 'payment':
-            
             return {
                 ...state,
                 openmodal: action.payload.success ? false : true,
                 reload : action.payload.success ? false : true,
+            }
+        case 'all':
+            return {
+                ...state
             }
         default:
             throw new Error(`Unhandled action type: ${action.type}`);
