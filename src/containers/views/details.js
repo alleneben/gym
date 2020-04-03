@@ -13,25 +13,23 @@ import validateform from '../../forms/hooks/validateform';
 import { api } from '../../store/';
 
 const Details = () => {
-    const { state: { data } } = useStore()
-
-    const [open, setopen] = useState(false)
+    const { state: { data, openmodal, reload }, dispatch } = useStore()
+    
 
     const tbcfg = {
-        header:['S/No','Firstname','Surname','Phone','Address','Email','Status'],
-        flds:[{n:'fnm',f:'t'},{n:'snm',f:'t'},{n:'tel',f:'t'},{n:'had',f:'t'},{n:'eml',f:'t'}],
-        dbcfg:{s:'controller',a:'find',m:'l',d:'members_fn', load:true,props:{'rid':'n','nam':'t'}},
+        header:['S/No','Firstname','Surname','Amount','Date'],
+        flds:[{n:'fnm',f:'t'},{n:'snm',f:'t'},{n:'amt',f:'n'},{n:'dct',f:'t'}],
+        dbcfg:{s:'controller',a:'find',m:'l',d:'payment_find_fn', load:true,props:{'rid':'n','nam':'t'}},
         params: {rid:data ? data.rid : '',nam:''},
-        actions:[]
+        actions:[],
+        status:[]
     }
 
-    const openmodal = () => {
-        // dispatch({type:'open', payload:data, action:'open'});
-        setopen(!open)
-
+    const open = () => {
+        dispatch({type:'openmodal', payload:!openmodal, action:'openmodal'});
     }
 
-    const { onChange, val, handleSubmit, submitting,invalid, opacity } = useForm({s:'controller',a:'save',d:'newmember_fn',data:data,m:'l'},validateform,submitdata,{type:'newuser',action:'newuser'})
+    const { onChange, val, handleSubmit, submitting,invalid, opacity } = useForm({s:'controller',a:'save',d:'payment_fn',data:data,m:'l'},validateform,submitdata,{type:'payment',action:'payment'})
 
     
     function submitdata(bp){
@@ -54,7 +52,7 @@ const Details = () => {
                     </div>
                 </div>
                 <div className={styles.actions}>
-                    <div onClick={openmodal} className={styles.icon}>
+                    <div onClick={open} className={styles.icon}>
                         <FontAwesomeIcon
                         style={{ fontSize: "2rem", marginBottom:'5px', color:"#4a5568"}}
                         icon={faMoneyBill} />{" "}
@@ -71,22 +69,29 @@ const Details = () => {
                     <StatsCard footer={{background:'#f6fafd'}} title={'Outstanding'} footertitle="View ">
                         GHC 30,000
                     </StatsCard>
-                    <StatsCard footer={{background:'#f6fafd'}} title={'Received'} footertitle="View ">
-                        GHC 150,000
+                    <StatsCard footer={{background:'#f6fafd'}} title={'Last Amt Paid'} footertitle="View ">
+                        GHC 
                     </StatsCard>
                 </div>
             </div>
             
             <div className={styles.overview}>
                 <h1>Recent Activity</h1>
-                <SCard title="Payments">
-                    <DataTable tbcfg={tbcfg} re={true}/>
-                </SCard>
+                <div className="section">
+                    <SCard title="Payments">
+                        <DataTable tbcfg={tbcfg} reload={reload}/>
+                    </SCard>
+                </div>
+                {/* <div className="section">
+                    <SCard title="Payments">
+                        <DataTable tbcfg={tbcfg} reload={reload}/>
+                    </SCard>
+                </div> */}
             </div>
             
-            <Modal status={open} onhide={openmodal} title='Payment' handleSubmit={handleSubmit}>
-                <CreditCard data={data}>
-                    <Field label={''} id={'amt'} type={'text'} placeholder={'Amount'} fieldtype={'tt'} onchange={onChange} value={val.amt} required={true} styles={formstyles} cstyles={{}} cb={'cb'} disabled={false}/>
+            <Modal status={openmodal} onhide={open} title='Payment' handleSubmit={handleSubmit} submitting={submitting}>
+                <CreditCard data={data} opacity={opacity}>
+                    <Field label={''} id={'amt'} type={'number'} placeholder={'Amount'} fieldtype={'tt'} onchange={onChange} value={val.amt} required={true} styles={formstyles} cstyles={{}} cb={'cb'} disabled={false}/>
                 </CreditCard>
             </Modal>
         </>

@@ -10,8 +10,9 @@ import styles from './modal.module.scss';
 
 const Modal = (props) => {
 
-    const { status, onhide, children, title,handleSubmit } = props
+    const { status, onhide, children, title,handleSubmit,submitting } = props
 
+console.log(submitting);
 
     let modalclass = status ? 'show' : 'hide';
 
@@ -43,7 +44,7 @@ const Modal = (props) => {
                     </div>
                     <div className={styles.footer}>
                         <button className={formstyles.button} onMouseDown={handlemousedown}>Cancel</button>
-                        <button className={formstyles.button} onClick={handleSubmit}>Submit</button>
+                        <button className={formstyles.button} onClick={handleSubmit} disabled={submitting}>Submit</button>
                     </div>
                 </div>
             </div>

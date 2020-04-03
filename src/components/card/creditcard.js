@@ -6,7 +6,7 @@ import styles from '../../asset/scss/util.module.scss';
 
 const CrediCard = (props) => {
 
-    const { children, data }  = props
+    const { children, data, opacity }  = props
     // console.log(data);
     
 
@@ -26,7 +26,7 @@ const CrediCard = (props) => {
                 </div>
                 </div> */}
                 <div className={styles.sleeve}>
-                    <div className={`${styles.creditcard} ${styles.selected}`} style={{ background: '#555' }}>
+                    <div className={`${styles.creditcard} ${styles.selected}`} style={{ background: '#555', opacity: opacity }}>
                         <div className={styles.cardcompany}>{data? data.enm : ''}</div>
                         <div className={styles.cardnumber}>
                             <div className={styles.digitgroup}>4234 1302 3798 0265</div>

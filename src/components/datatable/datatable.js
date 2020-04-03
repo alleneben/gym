@@ -6,10 +6,10 @@ import './datatable.css';
 import { api, useStore } from '../../store';
 
 let col=0;
-const DataTable  = ({ tbcfg, re }) => {
+const DataTable  = ({ tbcfg, reload }) => {
     const [data, setdata] = useState([])
     const { dispatch } = useStore();
-
+    
     
     useEffect(() => {
         let tbl = document.getElementById('tbl')
@@ -19,10 +19,10 @@ const DataTable  = ({ tbcfg, re }) => {
         api.fxns.submit(params,api.fxns.endpoint)
         .then(rd => {
             
-                tbl.classList.remove('loading');
-        
+            tbl.classList.remove('loading');
             if(rd.success){
-                setdata(rd.sd)                
+                setdata(rd.sd)
+                // dispatch({type:'',payload:'',type:''})                
             } else {
                 console.log(rd);
             }
@@ -30,7 +30,7 @@ const DataTable  = ({ tbcfg, re }) => {
             tbl.classList.remove('loading');
             console.log(err)
         })  
-    },[])
+    },[reload])
 
 
     const trigger = (a,rec) => { 
@@ -69,7 +69,9 @@ const DataTable  = ({ tbcfg, re }) => {
                                 )
                             })
                         }
-                        <td id={styles.status} data-column={tbcfg.header[col+1]}><span>Enabled</span></td>
+                        <td id={styles.status} data-column={tbcfg.header[col+1]}>
+                            { tbcfg.status.map((s,sk)=> <span>{s}</span>) }
+                        </td>
                         <td id={styles.action} data-column={tbcfg.header[col+2]}>
                             { tbcfg.actions.map((a,ak) => <span key={ak} onClick={() => trigger(a,item)}>{a}</span>)}
                         </td>

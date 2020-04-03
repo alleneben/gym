@@ -71,6 +71,9 @@
         letter-spacing: 1px;
         margin-bottom: 10px;
     }
+    .section {
+        flex-basis: .5;
+    }
 }
 
 @media only screen and (min-width: 46.875em){

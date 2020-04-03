@@ -12,6 +12,9 @@ const initialstate = {
 };
 
 const reducer = (state, action) => {
+    // console.log(state);
+    // console.log(action);
+    
     
     
     switch (action.type) {
@@ -46,7 +49,7 @@ const reducer = (state, action) => {
                         submenu:[
                             {rid:0,nam:'New',typ:'updatedom', pay:'pay',act:'new',col:'primary',ico: faUserPlus},
                             {rid:1,nam:'Members',typ:'updatedom', pay:'pay',act:'list',col:'danger', ico: faUsers},
-                            {rid:2,nam:'Bill Members',typ:'updatedom', pay:'pay',act:'bill',col:'', ico: faMoneyBillWaveAlt}
+                            // {rid:2,nam:'Bill Members',typ:'updatedom', pay:'pay',act:'bill',col:'', ico: faMoneyBillWaveAlt}
 
                         ]
                     }
@@ -64,10 +67,17 @@ const reducer = (state, action) => {
                 updatedom: action.action,
                 data: action.payload
             }
-        case 'open':
+        case 'openmodal':
             return {
                 ...state,
-                
+                openmodal: action.payload
+            }
+        case 'payment':
+            
+            return {
+                ...state,
+                openmodal: action.payload.success ? false : true,
+                reload : action.payload.success ? false : true,
             }
         default:
             throw new Error(`Unhandled action type: ${action.type}`);

@@ -15,7 +15,8 @@ const NewContainer = () => {
         flds:[{n:'fnm',f:'t'},{n:'snm',f:'t'},{n:'tel',f:'t'},{n:'had',f:'t'},{n:'eml',f:'t'}],
         dbcfg:{s:'controller',a:'find',m:'l',d:'members_fn', load:true,props:{'rid':'n','nam':'t'}},
         params: {rid:'',nam:''},
-        actions:['details','edit']
+        actions:['details','edit'],
+        status:['Enabled']
     }
     const renderdom = (key) => {
         
@@ -24,8 +25,8 @@ const NewContainer = () => {
             edit: 'edit',
             details: <Details />,
             new: <NewForm />,
-            bill: <CreditCard />,
-            undefined: <CreditCard />
+            // bill: <CreditCard />,
+            undefined: <NewForm />
         }
         return cmp[key];
     }

@@ -22,21 +22,23 @@ const useForm = (initialstate, validate, submitdata,store) => {
         if(submitting){
             const noerrors = Object.keys(errors).length === 0;       
             if(noerrors){
-                
+
                 submitdata(val)
                 .then(rd => {
-                    // console.log(rd);
                     setsubmitting(false)
                     setopacity(1)
-                    if (rd.success) {
-                                               
-                        setvalues({})
+                    if (rd.success) {                                       
+                        if(type==='payment'){
+
+                        } else {
+                            setvalues({})
+                        } 
                         dispatch({ type:type, payload:rd, action:action }); 
                     } else {
                         console.log(rd)
                         setinvalid(rd[0])
                     }
-                },err => {setsubmitting(false);console.log(err)})
+                },err => {setsubmitting(false);setopacity(1);console.log(err)})
             } else {
                 setsubmitting(false)
             }   
