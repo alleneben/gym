@@ -80,6 +80,7 @@ const reducer = (state, action) => {
             }
         case 'all':
             return {
+                ...state,
                 ...state
             }
         default:
