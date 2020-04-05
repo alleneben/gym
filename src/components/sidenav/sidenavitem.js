@@ -6,10 +6,16 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const SideNavItems = ({ path, linktext,icon }) => {
 
+  // if (path==='logout') {
+  //   setTimeout(()=>{
+  //     window.location.reload()
+
+  //   },3000)
+  // }
 
   return (
     <li>
-      <NavLink to={path}>
+      <NavLink to={path ==='logout' ? '/' : path}>
       <FontAwesomeIcon
         style={{ fontSize: "1.1rem", marginRight: ".3rem" }}
         icon={icon} />{" "}

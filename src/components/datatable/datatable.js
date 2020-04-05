@@ -10,7 +10,6 @@ const DataTable  = ({ tbcfg, reload }) => {
     const [data, setdata] = useState([])
     const { dispatch } = useStore();
     
-    
     useEffect(() => {
         let tbl = document.getElementById('tbl')
         tbl.classList.add('loading');
@@ -20,7 +19,7 @@ const DataTable  = ({ tbcfg, reload }) => {
         .then(rd => {
             
             tbl.classList.remove('loading');
-            if(rd.success){
+            if(rd.success){ 
                 setdata(rd.sd)
                 // dispatch({type:'',payload:'',type:''})                
             } else {
@@ -30,7 +29,7 @@ const DataTable  = ({ tbcfg, reload }) => {
             tbl.classList.remove('loading');
             console.log(err)
         })  
-    },[reload])
+    },[tbcfg.name])
 
 
     const trigger = (a,rec) => { 

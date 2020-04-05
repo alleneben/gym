@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useReducer} from 'react';
-import { faQrcode,faUsers, faUserPlus, faMoneyBillWaveAlt /*faCalendarWeek, faSlidersH, faEnvelope, faBars, faTimes, faRunning*/ } from "@fortawesome/free-solid-svg-icons";
+import { faQrcode,faUsers, faUserPlus, faLock /*faCalendarWeek, faSlidersH, faEnvelope, faBars, faTimes, faRunning*/ } from "@fortawesome/free-solid-svg-icons";
 
 
 
@@ -43,14 +43,24 @@ const reducer = (state, action) => {
                     },
                     {
                         rid:1, 
-                        nam:'Members',
+                        nam:'Orders/Items',
                         path:'/app/new',
                         icon: faUsers,
                         submenu:[
-                            {rid:0,nam:'New',typ:'updatedom', pay:'pay',act:'new',col:'primary',ico: faUserPlus},
-                            {rid:1,nam:'Members',typ:'updatedom', pay:'pay',act:'list',col:'danger', ico: faUsers},
+                            {rid:0,nam:'New Item',typ:'updatedom', pay:'pay',act:'new',col:'primary',ico: faUserPlus},
+                            {rid:1,nam:'Items',typ:'updatedom', pay:'pay',act:'list',col:'danger', ico: faUsers},
+                            {rid:2,nam:'Orders',typ:'updatedom', pay:'pay',act:'orders',col:'danger', ico: faUsers},
                             // {rid:2,nam:'Bill Members',typ:'updatedom', pay:'pay',act:'bill',col:'', ico: faMoneyBillWaveAlt}
 
+                        ]
+                    },
+                    {
+                        rid:2, 
+                        nam:'Logout',
+                        path:'logout',
+                        icon: faLock,
+                        submenu:[
+                            
                         ]
                     }
                 ]
@@ -77,11 +87,6 @@ const reducer = (state, action) => {
                 ...state,
                 openmodal: action.payload.success ? false : true,
                 reload : action.payload.success ? false : true,
-            }
-        case 'all':
-            return {
-                ...state,
-                ...state
             }
         default:
             throw new Error(`Unhandled action type: ${action.type}`);

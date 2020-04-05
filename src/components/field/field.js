@@ -19,7 +19,8 @@ const Field = ({ label,id,type,placeholder,fieldtype,onchange,value,required,sty
             fm.append('s','cb');
             fm.append('a','combo')
             fm.append('df',cb)
-            fm.append('m','l')
+            fm.append('m','l');
+            fm.append('c','orders')
             api.fxns.combo(fm,api.fxns.endpoint)
             .then(rd => {
                 let c = rd.sd.map((rd,key) => <option key={key} value={rd.rid}>{rd.nam}</option>)
@@ -38,7 +39,7 @@ const Field = ({ label,id,type,placeholder,fieldtype,onchange,value,required,sty
                     <textarea id={id} name={id} type={ type } placeholder={ placeholder } onChange={onchange} value={value} required={required} style={cstyles}/>
                     :
                     <>
-                    <select placeholder={ placeholder } name={id} onMouseDown={(e)=>onmousedown(e)} onChange={onchange}>
+                    <select placeholder={ placeholder } required={required} name={id} onMouseDown={(e)=>onmousedown(e)} onChange={onchange}>
                         <option value="">Choose</option>
                         {
                             combo

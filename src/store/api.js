@@ -1,8 +1,8 @@
 
 export default {
   fxns: {
-    // endpoint:'http://gym.loc/service/',
-    endpoint:'http://flexworkoutcenter.kitchencarelimited.com/server/',
+    endpoint:'http://gym.loc/service/',
+    // endpoint:'http://worktimer.kitchencarelimited.com/server/',
     login: (params,url) => fetch(url,{method: 'post', body: params}).then(res => res.json()),
     base: (params,url) => fetch(url,{method: 'post', body: params}).then(res => res.json()),
     basicdata: (params,url) => fetch(url,{method: 'post', body: params}).then(res => res.json()),
@@ -45,7 +45,7 @@ const formatpost = (bp,form) => {
 
   
   fm.append("s", bp.s);fm.append("a", bp.a);fm.append('m',bp.m);fm.append('d',bp.d);
-  fm.append('dd',JSON.stringify(props));
+  fm.append('dd',JSON.stringify(props));fm.append('c',bp.c);
 
   return fm;
 }
@@ -56,21 +56,38 @@ const formatpostfieldset = (bp,form) => {
   
   let formvalues = form.props.children[1].props.children[0].props.children;
   var fm = new FormData(),props={};
-  formvalues.map((fv,key) => {
-    fv.props.children.map((fld,fky) => {
-      if(fld.props.children){
 
-      } else {
-        fm.append(fld.props.id,fld.props.value);
-        props[fld.props.id]= fld.props.id.substr(fld.props.id.length-1);
-
-        
-      }
+  if(formvalues.length > 0){
+    formvalues.map((fv,key) => {
+      fv.props.children.map((fld,fky) => {
+        if(fld.props.children){
+  
+        } else {
+          fm.append(fld.props.id,fld.props.value);
+          props[fld.props.id]= fld.props.id.substr(fld.props.id.length-1);
+  
+          
+        }
+      })
     })
-  })
+  } else {
+    // formvalues.map((fv,key) => {
+      formvalues.props.children.map((fld,fky) => {
+        if(fld.props.children){
+  
+        } else {
+          fm.append(fld.props.id,fld.props.value);
+          props[fld.props.id]= fld.props.id.substr(fld.props.id.length-1);
+  
+          
+        }
+      })
+    // })
+  }
+
 
   fm.append("s", bp.s);fm.append("a", bp.a);fm.append('m',bp.m);fm.append('d',bp.d);
-  fm.append('dd',JSON.stringify(props))
+  fm.append('dd',JSON.stringify(props));fm.append('c',bp.c)
   return fm;
 }
 const formatpostsearch = (tbcfg) => {
@@ -89,7 +106,7 @@ const formatpostsearch = (tbcfg) => {
   }
 
   fm.append("s", dbcfg.s);fm.append("a", dbcfg.a);fm.append('m',dbcfg.m);fm.append('d',dbcfg.d);
-  fm.append('dd',JSON.stringify(dbcfg.props))
+  fm.append('dd',JSON.stringify(dbcfg.props));fm.append('c',dbcfg.c)
   return fm;
 }
 const getcookie = (name) => {
