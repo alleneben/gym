@@ -50,6 +50,7 @@ const reducer = (state, action) => {
                             {rid:0,nam:'New Item',typ:'updatedom', pay:'pay',act:'new',col:'primary',ico: faUserPlus},
                             {rid:1,nam:'Items',typ:'updatedom', pay:'pay',act:'list',col:'danger', ico: faUsers},
                             {rid:2,nam:'Orders',typ:'updatedom', pay:'pay',act:'orders',col:'danger', ico: faUsers},
+                            {rid:3,nam:'Category',typ:'updatedom', pay:'pay',act:'category',col:'danger', ico: faUsers},
                             // {rid:2,nam:'Bill Members',typ:'updatedom', pay:'pay',act:'bill',col:'', ico: faMoneyBillWaveAlt}
 
                         ]

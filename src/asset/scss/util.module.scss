@@ -229,6 +229,40 @@
     justify-content: center;
     align-items: center;
 }
+
+.ordercard {
+    background: #ffffff;
+    margin-bottom: 2em;
+    flex: 1 0 500px;
+    box-sizing: border-box;
+    margin: 1rem .25em;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+    cursor: pointer;
+    transition: all 0.5 ease-out;
+
+    .ordercardcontent {
+        padding: 1.4em;
+
+        h2 {
+            margin-top: 0;
+            margin-bottom: .5em;
+            // font-size: 1.5rem;
+            font-weight: 500;
+        }
+
+        p {
+            font-size: 1rem;
+            font-weight: 300;
+        }
+    }
+    &:hover {
+        background: $bg-gray-500;
+        color: #ffffff;
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        transition: all 0.5s ease-out;
+    }
+}
+
 .datatable {
     border-collapse: collapse;
     width: 100%;
@@ -290,3 +324,15 @@
         // margin-left: 100px;
     }
 }
+@media screen and (min-width: 40em) {
+    .ordercard {
+        max-width: calc(20% -  1em);
+    }
+}
+
+@media screen and (min-width: 60em) {
+    .ordercard {
+        max-width: calc(25% - 1em);
+    }
+}
+    

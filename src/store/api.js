@@ -92,9 +92,9 @@ const formatpostfieldset = (bp,form) => {
   fm.append('dd',JSON.stringify(props));fm.append('c',config.DB)
   return fm;
 }
-const formatpostsearch = (tbcfg) => {
+const formatpostsearch = (cfg) => {
 
-  const { dbcfg, params } = tbcfg
+  const { dbcfg, params } = cfg
   
   var fm = new FormData()
   for (var key in params) {    

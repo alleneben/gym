@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { NewForm } from '../../forms';
-import { DataTable, SCard, CreditCard } from '../../components';
+import { NewForm, CategoryForm, OrderForm } from '../../forms';
+import { DataTable, SCard } from '../../components';
 import { Details } from '../'
 
 import { useStore } from '../../store';
@@ -19,14 +19,9 @@ const NewContainer = () => {
         actions:['edit'],
         status:['Enabled']
     }
-    const orderstbcfg = {
-        name:'Orders',
-        header:['S/No','Customer','Orderno','Phone','Location','Stamp','Status','Actions'],
-        flds:[{n:'nam',f:'t'},{n:'ord',f:'t'},{n:'tel',f:'t'},{n:'loc',f:'t'},{n:'dcd',f:'f'}],
+    const ordersdbcfg = {
         dbcfg:{s:'controller',a:'find',m:'l',d:'orderin_fn', load:true,props:{'rid':'n','ord':'t','tel':'t','eti':'n'}},
-        params: {rid:'',nam:''},
-        actions:['details','edit'],
-        status:['Enabled']
+        params: {rid:'',nam:'',eti:''}
     }
     const renderdom = (key) => {
         
@@ -35,7 +30,8 @@ const NewContainer = () => {
             edit: 'edit',
             details: <Details />,
             new: <NewForm />,
-            orders: <SCard><DataTable  tbcfg={orderstbcfg} /></SCard>,
+            orders: <OrderForm dbcfg={ordersdbcfg}/>,
+            category: <CategoryForm />,
             undefined: <NewForm />
         }
         return cmp[key];

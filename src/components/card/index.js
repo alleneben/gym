@@ -7,6 +7,8 @@ import SCard from './scard';
 import StatsCard from './statscard';
 import CreditCard from './creditcard';
 
+import OrderCard from './ordercard';
+
 export {
     Card,
     CardBody,
@@ -15,5 +17,7 @@ export {
 
     SCard,
     StatsCard,
-    CreditCard
+    CreditCard,
+
+    OrderCard
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Field, Card, CardHeader, CardBody, CardFooter } from '../../components';
+import { Field, Card, CardHeader, CardBody, CardFooter, SCard, DataTable } from '../../components';
 
 import utilstyle from '../../asset/scss/util.module.scss';
 import styles from '../../asset/scss/forms.module.scss';
@@ -12,9 +12,18 @@ import { api } from '../../store/';
 
 let form;
 
-const NewForm = () => {
-    const { onChange, val, handleSubmit, submitting,invalid, opacity } = useForm({s:'controller',a:'save',d:'newitem_fn',m:'l'},validateform,submitdata,{type:'newuser',action:'newuser'})
+const CategoryForm = () => {
+    const { onChange, val, handleSubmit, submitting,invalid, opacity } = useForm({s:'controller',a:'save',d:'newcategory_fn',m:'l'},validateform,submitdata,{type:'newuser',action:'newuser'})
 
+    const tbcfg = {
+        name:'Items',
+        header:['S/No','Name','Shortcode','Status','Actions'],
+        flds:[{n:'nam',f:'t'},{n:'shc',f:'t'}],
+        dbcfg:{s:'controller',a:'find',m:'l',d:'categories_fn', load:true,props:{'rid':'n','nam':'t','eti':'n'}},
+        params: {rid:'',nam:'',eti:''},
+        actions:['edit'],
+        status:['Enabled']
+    }
     
     function submitdata(fmvalues){
         try {   
@@ -30,9 +39,8 @@ const NewForm = () => {
     }
 
     const buildFormUI = () => {
-        const snm = buildield('Meal','snmt','text','','tt',onChange,val.snmt || '',true,styles,{width:260,height:30},'',submitting);
-        const mst = buildield('Category','mstn','','','cb',onChange,val.mstn || '',true,styles,{},'category_combo');
-        const fnm = buildield('Price','fnmn','number','','tt',onChange,val.fnmn || '',true,styles,{width:260,height:30});
+        const snm = buildield('Name','snmt','text','','tt',onChange,val.snmt || '',true,styles,{width:260,height:30},'',submitting);
+        const fnm = buildield('Short Code','fnmt','text','','tt',onChange,val.fnmt || '',true,styles,{width:260,height:30});
         
   
         let formui = <Card className={utilstyle.card} submittingstyle={opacity}>
@@ -43,14 +51,15 @@ const NewForm = () => {
             <form onSubmit={handleSubmit}>
                 <CardBody className={utilstyle.cardbody}>
                     <fieldset>
-                        <legend>Details</legend>
-                        { snm }{ fnm }{ mst }
+                        <legend>Cateory</legend>
+                        { snm }{ fnm }
                     </fieldset>
                 </CardBody>
                 <CardFooter className={utilstyle.cardfooter}>
                     <button type="submit"  className={styles.button}>Submit</button>
                 </CardFooter>
             </form>
+            <SCard><DataTable  tbcfg={tbcfg} /></SCard>,
         </Card>
 
         return formui;
@@ -63,4 +72,4 @@ const NewForm = () => {
     )
 }
 
-export default NewForm;
+export default CategoryForm;

@@ -2,21 +2,18 @@ import React, { useEffect } from 'react';
 
 
 import styles from './start.module.scss';
-import { LoginForm, SignupForm } from '../forms';
-import { DataTable, SCard } from '../components';
+import { LoginForm, OrderForm } from '../forms';
 
 import { api,useStore } from '../store';
 
 
 const Start = (props) => {
     const {state, dispatch} = useStore();
-    const tbcfg = {
-        header:['S/No','Firstname','Surname','Phone','Address','Email','Status','Action'],
-        flds:[{n:'fnm',f:'t'},{n:'snm',f:'t'},{n:'tel',f:'t'},{n:'had',f:'t'},{n:'eml',f:'t'}],
-        dbcfg:{s:'controller',a:'findt',m:'l',d:'members_fn', load:true,props:{'rid':'n','nam':'t'}},
-        params: {rid:'',nam:''},
-        actions:['details','edit']
-    }
+
+    // const ordersdbcfg = {
+    //     dbcfg:{s:'controller',a:'FindMobile',m:'l',d:'orderin_fn', load:true,props:{'rid':'n','ord':'t','tel':'t','eti':'n'}},
+    //     params: {rid:'',nam:'',eti:''}
+    // }
 
     useEffect(() => {
         let fm = new FormData()
@@ -58,6 +55,7 @@ const Start = (props) => {
             {/* <SCard title="Members">
                 <DataTable tbcfg={tbcfg} />
             </SCard> */}
+            {/* <OrderForm  dbcfg={ordersdbcfg}/> */}
             <div className={styles.landing}>
                 <div className={styles.left}>
                     <h2>Inspire Online Order System</h2>

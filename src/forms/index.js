@@ -1,9 +1,10 @@
 import { LoginForm, SignupForm } from './login';
-import { NewForm } from './new';
-
+import { NewForm, CategoryForm, OrderForm } from './new';
 
 export {
     LoginForm,
     SignupForm,
-    NewForm
+    NewForm,
+    CategoryForm,
+    OrderForm
 }
