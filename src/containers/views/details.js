@@ -19,7 +19,7 @@ const Details = () => {
     const tbcfg = {
         header:['S/No','Firstname','Surname','Amount','Date'],
         flds:[{n:'fnm',f:'t'},{n:'snm',f:'t'},{n:'amt',f:'n'},{n:'dct',f:'t'}],
-        dbcfg:{s:'controller',a:'find',m:'l',d:'payment_find_fn', load:true,props:{'rid':'n','nam':'t'}},
+        dbcfg:{s:'controller',a:'find',m:'l',c:'gym',d:'payment_find_fn', load:true,props:{'rid':'n','nam':'t'}},
         params: {rid:data ? data.rid : '',nam:''},
         actions:[],
         status:[]
@@ -29,7 +29,7 @@ const Details = () => {
         dispatch({type:'openmodal', payload:!openmodal, action:'openmodal'});
     }
 
-    const { onChange, val, handleSubmit, submitting,invalid, opacity } = useForm({s:'controller',a:'save',d:'payment_fn',data:data,m:'l'},validateform,submitdata,{type:'payment',action:'payment'})
+    const { onChange, val, handleSubmit, submitting,invalid, opacity } = useForm({s:'controller',a:'save',d:'payment_fn',data:data,m:'l',c:'gym'},validateform,submitdata,{type:'payment',action:'payment'})
 
     
     function submitdata(bp){

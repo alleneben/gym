@@ -13,7 +13,7 @@ import { api, combo } from '../../store/';
 let form;
 
 const NewForm = () => {
-    const { onChange, val, handleSubmit, submitting,invalid, opacity } = useForm({s:'controller',a:'save',d:'newmember_fn',m:'l'},validateform,submitdata,{type:'newuser',action:'newuser'})
+    const { onChange, val, handleSubmit, submitting,invalid, opacity } = useForm({s:'controller',a:'save',d:'newmember_fn',m:'l',c:'gym'},validateform,submitdata,{type:'newuser',action:'newuser'})
 
     
     function submitdata(fmvalues){

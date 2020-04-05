@@ -14,7 +14,7 @@ import { api } from '../../store/';
 let form;
 const SignupForm = () => {
 
-    const { onChange, val, handleSubmit,invalid,opacity } = useForm({s:'controller',a:'signup',d:'signup',m:'l'},validateform,submitdata,{type:'showlogin',action:false})
+    const { onChange, val, handleSubmit,invalid,opacity } = useForm({s:'controller',a:'signup',d:'signup',m:'l',c:'gym'},validateform,submitdata,{type:'showlogin',action:false})
 
 
     function submitdata(fmvalues){

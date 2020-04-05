@@ -45,7 +45,7 @@ const formatpost = (bp,form) => {
 
   
   fm.append("s", bp.s);fm.append("a", bp.a);fm.append('m',bp.m);fm.append('d',bp.d);
-  fm.append('dd',JSON.stringify(props));
+  fm.append('dd',JSON.stringify(props));fm.append('c',bp.c);
 
   return fm;
 }
