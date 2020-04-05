@@ -6,7 +6,7 @@ import './datatable.css';
 import { api, useStore } from '../../store';
 
 let col=0;
-const DataTable  = ({ tbcfg, reload }) => {
+const DataTable  = ({ tbcfg }) => {
     const [data, setdata] = useState([])
     const { dispatch } = useStore();
     

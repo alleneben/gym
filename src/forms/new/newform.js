@@ -13,7 +13,7 @@ import { api, combo } from '../../store/';
 let form;
 
 const NewForm = () => {
-    const { onChange, val, handleSubmit, submitting,invalid, opacity } = useForm({s:'controller',a:'save',d:'newitem_fn',m:'l',c:'orders'},validateform,submitdata,{type:'newuser',action:'newuser'})
+    const { onChange, val, handleSubmit, submitting,invalid, opacity } = useForm({s:'controller',a:'save',d:'newitem_fn',m:'l'},validateform,submitdata,{type:'newuser',action:'newuser'})
 
     
     function submitdata(fmvalues){
@@ -25,13 +25,13 @@ const NewForm = () => {
         }
     }  
 
-    const buildield = (label,id,type,placeholder,fieldtype,onchange,value,required,styles,cstyles,cb,combodb,disabled) => {
-        return <Field label={label} id={id} type={type} placeholder={placeholder} fieldtype={fieldtype} onchange={onchange} value={value} required={required} styles={styles} cstyles={cstyles} cb={cb} combodb={combodb} disabled={disabled}/>
+    const buildield = (label,id,type,placeholder,fieldtype,onchange,value,required,styles,cstyles,cb,disabled) => {
+        return <Field label={label} id={id} type={type} placeholder={placeholder} fieldtype={fieldtype} onchange={onchange} value={value} required={required} styles={styles} cstyles={cstyles} cb={cb} disabled={disabled}/>
     }
 
     const buildFormUI = () => {
         const snm = buildield('Meal','snmt','text','','tt',onChange,val.snmt || '',true,styles,{width:260,height:30},'',submitting);
-        const mst = buildield('Category','mstn','','','cb',onChange,val.mstn || '',true,styles,{},'category_combo','orders');
+        const mst = buildield('Category','mstn','','','cb',onChange,val.mstn || '',true,styles,{},'category_combo');
         const fnm = buildield('Price','fnmn','number','','tt',onChange,val.fnmn || '',true,styles,{width:260,height:30});
         
   

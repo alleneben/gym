@@ -31,7 +31,7 @@ const useForm = (initialstate, validate, submitdata,store) => {
                         if(type==='payment'){
 
                         } else {
-                            setvalues({})
+                            setvalues({s:val.s,a:val.a,d:val.d,m:val.m})
                         } 
                         dispatch({ type:type, payload:rd, action:action }); 
                     } else {
