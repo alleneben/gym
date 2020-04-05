@@ -38,7 +38,7 @@ const Field = ({ label,id,type,placeholder,fieldtype,onchange,value,required,sty
                     <textarea id={id} name={id} type={ type } placeholder={ placeholder } onChange={onchange} value={value} required={required} style={cstyles}/>
                     :
                     <>
-                    <select placeholder={ placeholder } name={id} onMouseDown={(e)=>onmousedown(e)} onChange={onchange}>
+                    <select placeholder={ placeholder } name={id} required={required} onMouseDown={(e)=>onmousedown(e)} onChange={onchange}>
                         <option value="">Choose</option>
                         {
                             combo

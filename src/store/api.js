@@ -1,8 +1,8 @@
 
 export default {
   fxns: {
-    // endpoint:'http://gym.loc/service/',
-    endpoint:'http://flexworkoutcenter.kitchencarelimited.com/server/',
+    endpoint:'http://gym.loc/service/',
+    // endpoint:'http://flexworkoutcenter.kitchencarelimited.com/server/',
     login: (params,url) => fetch(url,{method: 'post', body: params}).then(res => res.json()),
     base: (params,url) => fetch(url,{method: 'post', body: params}).then(res => res.json()),
     basicdata: (params,url) => fetch(url,{method: 'post', body: params}).then(res => res.json()),
@@ -70,7 +70,7 @@ const formatpostfieldset = (bp,form) => {
   })
 
   fm.append("s", bp.s);fm.append("a", bp.a);fm.append('m',bp.m);fm.append('d',bp.d);
-  fm.append('dd',JSON.stringify(props))
+  fm.append('dd',JSON.stringify(props));fm.append('c',bp.c);
   return fm;
 }
 const formatpostsearch = (tbcfg) => {
@@ -89,7 +89,7 @@ const formatpostsearch = (tbcfg) => {
   }
 
   fm.append("s", dbcfg.s);fm.append("a", dbcfg.a);fm.append('m',dbcfg.m);fm.append('d',dbcfg.d);
-  fm.append('dd',JSON.stringify(dbcfg.props))
+  fm.append('dd',JSON.stringify(dbcfg.props));fm.append('c',dbcfg.c);
   return fm;
 }
 const getcookie = (name) => {
