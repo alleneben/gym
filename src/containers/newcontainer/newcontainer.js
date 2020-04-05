@@ -13,7 +13,7 @@ const NewContainer = () => {
     const tbcfg = {
         header:['S/No','Firstname','Surname','Phone','Address','Email','Status','Actions'],
         flds:[{n:'fnm',f:'t'},{n:'snm',f:'t'},{n:'tel',f:'t'},{n:'had',f:'t'},{n:'eml',f:'t'}],
-        dbcfg:{s:'controller',a:'find',m:'l',c:'gym',d:'members_fn', load:true,props:{'rid':'n','nam':'t'}},
+        dbcfg:{s:'controller',a:'find',m:'l',d:'members_fn', load:true,props:{'rid':'n','nam':'t'}},
         params: {rid:'',nam:''},
         actions:['details','edit'],
         status:['Enabled']

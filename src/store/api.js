@@ -1,4 +1,3 @@
-
 export default {
   fxns: {
     endpoint:'http://gym.loc/service/',
@@ -24,6 +23,9 @@ export default {
   }
 }
 
+const config ={DB: 'gym'}
+
+
 const formatpost = (bp,form) => {
   
   var fm = new FormData(),props={};
@@ -46,7 +48,7 @@ const formatpost = (bp,form) => {
 
   
   fm.append("s", bp.s);fm.append("a", bp.a);fm.append('m',bp.m);fm.append('d',bp.d);
-  fm.append('dd',JSON.stringify(props));fm.append('c',bp.c);
+  fm.append('dd',JSON.stringify(props));fm.append('c',config.DB);
 
   return fm;
 }
@@ -71,7 +73,7 @@ const formatpostfieldset = (bp,form) => {
   })
 
   fm.append("s", bp.s);fm.append("a", bp.a);fm.append('m',bp.m);fm.append('d',bp.d);
-  fm.append('dd',JSON.stringify(props));fm.append('c',bp.c);
+  fm.append('dd',JSON.stringify(props));fm.append('c',config.DB);
   return fm;
 }
 const formatpostsearch = (tbcfg) => {
@@ -90,7 +92,7 @@ const formatpostsearch = (tbcfg) => {
   }
 
   fm.append("s", dbcfg.s);fm.append("a", dbcfg.a);fm.append('m',dbcfg.m);fm.append('d',dbcfg.d);
-  fm.append('dd',JSON.stringify(dbcfg.props));fm.append('c',dbcfg.c);
+  fm.append('dd',JSON.stringify(dbcfg.props));fm.append('c',config.DB);
   return fm;
 }
 const getcookie = (name) => {
