@@ -5,7 +5,7 @@ import { api } from '../../store';
 
 
 
-const Field = ({ label,id,type,placeholder,fieldtype,onchange,value,required,styles,cstyles,cb,disabled}) => {
+const Field = ({ label,id,type,placeholder,fieldtype,onchange,value,required,styles,cstyles,cb,combodb,disabled}) => {
     
     const [combo, setcombo] = useState([])
 
@@ -20,7 +20,7 @@ const Field = ({ label,id,type,placeholder,fieldtype,onchange,value,required,sty
             fm.append('a','combo')
             fm.append('df',cb)
             fm.append('m','l');
-            fm.append('c','orders')
+            fm.append('c',combodb)
             api.fxns.combo(fm,api.fxns.endpoint)
             .then(rd => {
                 let c = rd.sd.map((rd,key) => <option key={key} value={rd.rid}>{rd.nam}</option>)
