@@ -2,7 +2,7 @@
 export default {
   fxns: {
     endpoint:'http://gym.loc/service/',
-    db:'gym',
+    DB:'gym',
     // endpoint:'http://flexworkoutcenter.kitchencarelimited.com/server/',
     login: (params,url) => fetch(url,{method: 'post', body: params}).then(res => res.json()),
     base: (params,url) => fetch(url,{method: 'post', body: params}).then(res => res.json()),

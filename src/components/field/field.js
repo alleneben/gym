@@ -20,7 +20,7 @@ const Field = ({ label,id,type,placeholder,fieldtype,onchange,value,required,sty
             fm.append('a','combo')
             fm.append('df',cb)
             fm.append('m','l')
-            fm.append('c',api.fxns.db)
+            fm.append('c',api.fxns.DB)
             api.fxns.combo(fm,api.fxns.endpoint)
             .then(rd => {
                 let c = rd.sd.map((rd,key) => <option key={key} value={rd.rid}>{rd.nam}</option>)
