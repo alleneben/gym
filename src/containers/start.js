@@ -10,10 +10,10 @@ import { api,useStore } from '../store';
 const Start = (props) => {
     const {state, dispatch} = useStore();
 
-    // const ordersdbcfg = {
-    //     dbcfg:{s:'controller',a:'FindMobile',m:'l',d:'orderin_fn', load:true,props:{'rid':'n','ord':'t','tel':'t','eti':'n'}},
-    //     params: {rid:'',nam:'',eti:''}
-    // }
+    const ordersdbcfg = {
+        dbcfg:{s:'controller',a:'FindMobile',m:'l',d:'orderin_fn', load:true,props:{'rid':'n','ord':'t','tel':'t','eti':'n'}},
+        params: {rid:'',nam:'',eti:''}
+    }
 
     useEffect(() => {
         let fm = new FormData()
