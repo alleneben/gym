@@ -1,3 +1,5 @@
+@import '../../asset/scss/variables.scss';
+
 .cards {
   display: flex;
   flex-wrap: wrap;
@@ -8,6 +10,10 @@
   margin: 0 auto;
   padding: 0 1em;
 }
+// .loading {
+//   background: $bg-gray-400;
+// }
+
 
 @media screen and (min-width: 52em) {
   .centered {
