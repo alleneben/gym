@@ -2,18 +2,13 @@ import React, { useEffect } from 'react';
 
 
 import styles from './start.module.scss';
-import { LoginForm, OrderForm } from '../forms';
+import { LoginForm } from '../forms';
 
 import { api,useStore } from '../store';
 
 
 const Start = (props) => {
     const {state, dispatch} = useStore();
-
-    const ordersdbcfg = {
-        dbcfg:{s:'controller',a:'FindMobile',m:'l',d:'orderin_fn', load:true,props:{'rid':'n','ord':'t','tel':'t','eti':'n'}},
-        params: {rid:'',nam:'',eti:''}
-    }
 
     useEffect(() => {
         let fm = new FormData()
@@ -30,10 +25,7 @@ const Start = (props) => {
                     props.history.push('/app/dashboard');
                 }
             }
-        }, err => console.log(err))
-        
-        // if(!!state.loginsuccess) return  props.history.push('/app/dashboard');
-        
+        }, err => console.log(err))        
     },[state])
     
     const route = () => {
@@ -52,10 +44,6 @@ const Start = (props) => {
                 </ul> */}
                 {/* <button className={styles.login} onClick={() => route()}>{state.showlogin ? 'Sign Up' : 'Sign In'}</button> */}
             </nav>
-            {/* <SCard title="Members">
-                <DataTable tbcfg={tbcfg} />
-            </SCard> */}
-            {/* <OrderForm  dbcfg={ordersdbcfg}/> */}
             <div className={styles.landing}>
                 <div className={styles.left}>
                     <h2>Inspire Online Order System</h2>

@@ -8,6 +8,7 @@ import StatsCard from './statscard';
 import CreditCard from './creditcard';
 
 import OrderCard from './ordercard';
+import Preview from './preview';
 
 export {
     Card,
@@ -19,5 +20,6 @@ export {
     StatsCard,
     CreditCard,
 
-    OrderCard
+    OrderCard,
+    Preview
 }

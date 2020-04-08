@@ -1,14 +1,17 @@
 import React,{ useEffect, useState } from 'react';
-import { OrderCard } from '../../components';
+import { OrderCard, Modal, Preview } from '../../components';
 import './orderform.scss';
 
 import { api } from '../../store';
+import { useStore } from '../../store';
 
-import { subscribeToTimer } from '../../store/api.socket.io';
+
+// import { subscribeToTimer } from '../../store/api.socket.io';
 
 
 const OrderForm = ({ dbcfg }) => {
     const [data, setdata] = useState([])
+    const { state, dispatch } = useStore()
 
     useEffect(() => {
         let loader = document.getElementById('loader')
@@ -29,23 +32,36 @@ const OrderForm = ({ dbcfg }) => {
             loader.classList.remove('loading');
             console.log(err)
         })  
-       
-
     },[])
 
-    const content = () => {
-        return data.map((rd,key) =>  <OrderCard key={key} {...rd} />)
+    const open = (rd) => {
+        dispatch({type:'openmodal', payload:!state.openmodal, action:'openmodal', data:rd});
     }
+    const handleSubmit = () => {
+
+    }
+    const content = () => {
+        return data.map((rd,key) =>  <OrderCard key={key} {...rd} open={() => open(rd)} />)
+    }
+    const items = (data) => {    
+        let dd = data.items ? data.items : [];
+            
+        return dd.map((rd,key) => <Preview {...rd} key={key}/>)
+    }
+console.log(state);
 
     return(
-        
+        <>
             <div className={"centered"}>
                 <section className={"cards"} id="loader">
-                
-                   { content() }
+                    { content() }
                 </section>
             </div>
-        
+            <Modal status={state.openmodal} onhide={open} title='Manage Order' handleSubmit={handleSubmit} submitting={'submitting'}>
+                { state.data ? `${state.data.ord} :: GHC ${state.data.amt}` : '' }
+                {state.data && items(state.data)}
+            </Modal>
+        </>  
     )
 }
 

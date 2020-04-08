@@ -12,7 +12,6 @@ const Modal = (props) => {
 
     const { status, onhide, children, title,handleSubmit,submitting } = props
 
-console.log(submitting);
 
     let modalclass = status ? 'show' : 'hide';
 
