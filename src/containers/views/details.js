@@ -29,7 +29,7 @@ const Details = () => {
         dispatch({type:'openmodal', payload:!openmodal, action:'openmodal'});
     }
 
-    const { onChange, val, handleSubmit, submitting,invalid, opacity } = useForm({s:'controller',a:'save',d:'payment_fn',data:data,m:'l'},validateform,submitdata,{type:'payment',action:'payment'})
+    const { onChange, val, handleSubmit, submitting, opacity } = useForm({s:'controller',a:'save',d:'payment_fn',data:data,m:'l'},validateform,submitdata,{type:'payment',action:'payment'})
 
     
     function submitdata(bp){

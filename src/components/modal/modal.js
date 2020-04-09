@@ -10,14 +10,19 @@ import styles from './modal.module.scss';
 
 const Modal = (props) => {
 
-    const { status, onhide, children, title,handleSubmit,submitting } = props
+    const { status, onhide, children, title,handleSubmit,fns } = props
 
 
     let modalclass = status ? 'show' : 'hide';
 
-    const handlemousedown = e => {
+    const handlemousedown = (e,fn,c) => {
+        if(fn === undefined) return onhide();
+        
+
+        handleSubmit(c)
         onhide()
         e.stopPropagation(); 
+       
     }
 
     return(
@@ -42,14 +47,16 @@ const Modal = (props) => {
                         { children }
                     </div>
                     <div className={styles.footer}>
-                        <button className={formstyles.button} onMouseDown={handlemousedown}>Cancel</button>
-                        <button className={formstyles.button} onClick={handleSubmit} disabled={submitting}>Submit</button>
+                        {
+                            fns.map((fn,key) => <button key={key} className={formstyles.button} onClick={(e,f) => handlemousedown(e,fn,children)}>{fn}</button>)
+                        }
+                        
+                        {/* <button className={formstyles.button} onClick={handleSubmit} disabled={submitting}>Submit</button> */}
                     </div>
                 </div>
             </div>
         
     )
 }
-
 
 export default Modal;
