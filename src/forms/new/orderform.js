@@ -67,12 +67,9 @@ const OrderForm = ({ dbcfg }) => {
                 </section>
             </div>
             <Modal status={state.openmodal} onhide={open} title='Manage Order' handleSubmit={handleSubmit} submitting={'submitting'} fns={['undo','submit']}>
-                <div>
                     { state.data ? `${state.data.ord}` : '' }
                     <div>{ state.data ? `Current State:: ${state.data.osn} ->  New State:: ${state.data.nsn}` : '' }</div>
                     { state.data && items(state.data) }
-
-                </div>
             </Modal>
         </>  
     )
