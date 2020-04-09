@@ -13,9 +13,9 @@ import validateform from '../hooks/validateform';
 
 const OrderForm = ({ dbcfg }) => {
     const [data, setdata] = useState([])
-    const [item, setitem] = useState('')
+    const [item, setitem] = useState({})
     const { state, dispatch } = useStore()
-    const { val, handleSubmit } = useForm({s:'controller',a:'save',d:'update_order_fn',m:'l'},validateform,submitdata,{type:'payment',action:'payment'})
+    const { handleSubmit } = useForm({s:'controller',a:'save',d:'update_order_fn',m:'l'},validateform,submitdata,{type:'payment',action:'payment'})
 
     
     function submitdata(bp){
@@ -49,13 +49,15 @@ const OrderForm = ({ dbcfg }) => {
     },[])
 
     const open = (rd) => {
+
         setitem(rd)       
-        dispatch({type:'openmodal', payload:!state.openmodal, action:'openmodal', data:item ? item : rd});
+        dispatch({type:'openmodal', payload:!state.openmodal, action:'openmodal', data:item ? item : rd,fn:rd});
     }
 
     const content = () => {
         return data.map((rd,key) =>  <OrderCard key={key} {...rd} open={() => open(rd)} />)
     }
+
     const items = (data) => {    
         let dd = data.items ? data.items : [];
         return dd.map((rd,key) => <Preview {...rd} key={key}/>)
@@ -68,7 +70,7 @@ const OrderForm = ({ dbcfg }) => {
                     { content() }
                 </section>
             </div>
-            <Modal status={state.openmodal} onhide={open} title='Manage Order' handleSubmit={handleSubmit} submitting={'submitting'} fns={['undo','submit']}>
+            <Modal status={state.openmodal} onhide={(rd) => open(rd)} title='Manage Order' handleSubmit={handleSubmit} submitting={'submitting'} fns={['cancel','undo','submit']}>
                     { state.data ? `${state.data.ord}` : '' }
                     <div>{ state.data ? `Current State:: ${state.data.osn} ->  New State:: ${state.data.nsn}` : '' }</div>
                     { state.data && items(state.data) }

@@ -15,12 +15,12 @@ const Modal = (props) => {
 
     let modalclass = status ? 'show' : 'hide';
 
-    const handlemousedown = (e,fn,c) => {
+    const handlemousedown = (e,fn) => {
         if(fn === undefined) return onhide();
         
 
         handleSubmit(e)
-        onhide()
+        onhide(fn)
         e.stopPropagation(); 
        
     }
@@ -48,7 +48,7 @@ const Modal = (props) => {
                     </div>
                     <div className={styles.footer}>
                         {
-                            fns.map((fn,key) => <button key={key} className={formstyles.button} onClick={(e,f) => handlemousedown(e,fn,children)}>{fn}</button>)
+                            fns.map((fn,key) => <button key={key} className={formstyles.button} onClick={(e,f) => handlemousedown(e,fn)}>{fn}</button>)
                         }
                         
                         {/* <button className={formstyles.button} onClick={handleSubmit} disabled={submitting}>Submit</button> */}

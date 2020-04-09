@@ -29,8 +29,9 @@ const formatpost = (bp,form) => {
   
   var fm = new FormData(),props={};
   if(form.data){
-    fm.append('oid',form.data.rid)
-    props = {'oid':'n'}
+    fm.append('oid',form.data.rid);
+    fm.append('fn',form.fn)
+    props = {'oid':'n','fn':'t'}
   } else {
     let formvalues = form.props.children[1].props.children[0].props.children;
     for (var key in formvalues) {

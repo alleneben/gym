@@ -82,7 +82,8 @@ const reducer = (state, action) => {
             return {
                 ...state,
                 openmodal: action.payload,
-                data: action.data
+                data: action.data,
+                fn: action.fn
             }
         case 'payment':
             return {

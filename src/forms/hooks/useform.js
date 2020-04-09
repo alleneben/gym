@@ -53,7 +53,8 @@ const useForm = (initialstate, validate, submitdata,store) => {
         seterrors(validationerrors)
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = (e,fn) => {
+        
         e.preventDefault()
         // const validationerrors = validate(val)
         // seterrors(validationerrors)
