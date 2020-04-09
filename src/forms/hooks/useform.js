@@ -15,6 +15,7 @@ const useForm = (initialstate, validate, submitdata,store) => {
 
     const {dispatch} = useStore();
 
+// console.log(val);
 
 
     useEffect(() => {
@@ -53,8 +54,6 @@ const useForm = (initialstate, validate, submitdata,store) => {
     }
 
     const handleSubmit = (e) => {
-        console.log(e);
-        
         e.preventDefault()
         // const validationerrors = validate(val)
         // seterrors(validationerrors)

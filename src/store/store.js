@@ -78,7 +78,7 @@ const reducer = (state, action) => {
                 updatedom: action.action,
                 data: action.payload
             }
-        case 'openmodal':            
+        case 'openmodal':  
             return {
                 ...state,
                 openmodal: action.payload,

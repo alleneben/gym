@@ -19,7 +19,7 @@ const Modal = (props) => {
         if(fn === undefined) return onhide();
         
 
-        handleSubmit(c)
+        handleSubmit(e)
         onhide()
         e.stopPropagation(); 
        

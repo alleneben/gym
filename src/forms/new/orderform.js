@@ -13,13 +13,14 @@ import validateform from '../hooks/validateform';
 
 const OrderForm = ({ dbcfg }) => {
     const [data, setdata] = useState([])
+    const [item, setitem] = useState('')
     const { state, dispatch } = useStore()
-    const { val, handleSubmit } = useForm({s:'controller',a:'save',d:'payment_fn',data:data,m:'l'},validateform,submitdata,{type:'payment',action:'payment'})
+    const { val, handleSubmit } = useForm({s:'controller',a:'save',d:'update_order_fn',m:'l'},validateform,submitdata,{type:'payment',action:'payment'})
 
     
     function submitdata(bp){
         try {   
-            const params  = api.utils.formatpost(bp,val);
+            const params  = api.utils.formatpost(bp,state);
             return api.fxns.submit(params,api.fxns.endpoint)
         } catch (error) {
             
@@ -48,7 +49,8 @@ const OrderForm = ({ dbcfg }) => {
     },[])
 
     const open = (rd) => {
-        dispatch({type:'openmodal', payload:!state.openmodal, action:'openmodal', data:rd});
+        setitem(rd)       
+        dispatch({type:'openmodal', payload:!state.openmodal, action:'openmodal', data:item ? item : rd});
     }
 
     const content = () => {
