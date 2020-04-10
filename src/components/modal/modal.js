@@ -48,7 +48,7 @@ const Modal = (props) => {
                     </div>
                     <div className={styles.footer}>
                         {
-                            fns.map((fn,key) => <button key={key} className={formstyles.button} onClick={(e,f) => handlemousedown(e,fn)}>{fn}</button>)
+                            fns.map((fn,key) => <button key={key} className={formstyles.button} onClick={(e) => handlemousedown(e,fn)}>{fn}</button>)
                         }
                         
                         {/* <button className={formstyles.button} onClick={handleSubmit} disabled={submitting}>Submit</button> */}

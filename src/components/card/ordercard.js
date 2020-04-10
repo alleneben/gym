@@ -6,7 +6,7 @@ import styles from '../../asset/scss/util.module.scss';
 const OrderCard = (props) => {
     const {nam,ord,tel,loc,sts,ost,osn,amt,open} = props
 
-    const state = ost === '0' ? 'notpaid' : ost === '1' ? 'paid' : ost === '2' ? 'cooking' : ost === '3' ? 'moved' : 'delivered';
+    const state = ost === '0' ? 'notpaid' : ost === '1' ? 'paid' : ost === '2' ? 'cooking' : ost === '3' ? 'moved' : ost === '4' ? 'delivered' : ost === '5' ? 'closed' : 'canceled';
     
     return(
         <>

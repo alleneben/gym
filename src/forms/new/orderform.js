@@ -13,7 +13,6 @@ import validateform from '../hooks/validateform';
 
 const OrderForm = ({ dbcfg }) => {
     const [data, setdata] = useState([])
-    const [item, setitem] = useState({})
     const { state, dispatch } = useStore()
     const { handleSubmit } = useForm({s:'controller',a:'save',d:'update_order_fn',m:'l'},validateform,submitdata,{type:'payment',action:'payment'})
 
@@ -29,12 +28,12 @@ const OrderForm = ({ dbcfg }) => {
 
     useEffect(() => {
         let loader = document.getElementById('loader')
-        loader.classList.add('loading');
+        loader.classList.add('spinner');
 
         const params  = api.utils.formatpostsearch(dbcfg);
         api.fxns.submit(params,api.fxns.endpoint)
         .then(rd => {
-            loader.classList.remove('loading');
+            loader.classList.remove('spinner');
             if(rd.success){ 
                 setdata(rd.sd)
                 // subscribeToTimer((err, rd) => );
@@ -46,13 +45,12 @@ const OrderForm = ({ dbcfg }) => {
             loader.classList.remove('loading');
             console.log(err)
         })  
-    },[])
+    },[state.fn])
 
-    const open = (rd) => {
-
-        setitem(rd)       
-        dispatch({type:'openmodal', payload:!state.openmodal, action:'openmodal', data:item ? item : rd,fn:rd});
+    const open = (rd,fn) => {        
+        dispatch({type:'openmodal', payload:!state.openmodal, action:'openmodal', data:rd, fn:fn});
     }
+
 
     const content = () => {
         return data.map((rd,key) =>  <OrderCard key={key} {...rd} open={() => open(rd)} />)
@@ -66,11 +64,12 @@ const OrderForm = ({ dbcfg }) => {
     return(
         <>
             <div className={"centered"}>
-                <section className={"cards"} id="loader">
-                    { content() }
+                <section className={"cards"} >
+                    {  content() }
                 </section>
             </div>
-            <Modal status={state.openmodal} onhide={(rd) => open(rd)} title='Manage Order' handleSubmit={handleSubmit} submitting={'submitting'} fns={['cancel','undo','submit']}>
+            <div id="loader"><div></div><div></div></div>
+            <Modal status={state.openmodal} onhide={(fn) => open(state.data,fn)} title='Manage Order' handleSubmit={handleSubmit} submitting={'submitting'} fns={['cancel','undo','submit']}>
                     { state.data ? `${state.data.ord}` : '' }
                     <div>{ state.data ? `Current State:: ${state.data.osn} ->  New State:: ${state.data.nsn}` : '' }</div>
                     { state.data && items(state.data) }

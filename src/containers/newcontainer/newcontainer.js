@@ -32,7 +32,7 @@ const NewContainer = () => {
             new: <NewForm />,
             orders: <OrderForm dbcfg={ordersdbcfg}/>,
             category: <CategoryForm />,
-            undefined: <OrderForm dbcfg={ordersdbcfg}/>
+            undefined: <NewForm/>
         }
         return cmp[key];
     }
