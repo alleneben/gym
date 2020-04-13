@@ -6,9 +6,9 @@ import './datatable.css';
 import { api, useStore } from '../../store';
 
 let col=0;
-const DataTable  = ({ tbcfg }) => {
+const DataTable  = ({ tbcfg, reclen }) => {
     const [data, setdata] = useState([])
-    const { dispatch } = useStore();
+    const { dispatch } = useStore();    
     
     useEffect(() => {
         let tbl = document.getElementById('tbl')
@@ -29,7 +29,7 @@ const DataTable  = ({ tbcfg }) => {
             tbl.classList.remove('loading');
             console.log(err)
         })  
-    },[tbcfg.name])
+    },[tbcfg.name,reclen])
 
 
     const trigger = (a,rec) => { 
@@ -69,7 +69,7 @@ const DataTable  = ({ tbcfg }) => {
                             })
                         }
                         <td id={styles.status} data-column={tbcfg.header[col+1]}>
-                            { tbcfg.status.map((s,sk)=> <span>{s}</span>) }
+                            { tbcfg.status.map((s,sk)=> <span key={sk}>{s}</span>) }
                         </td>
                         <td id={styles.action} data-column={tbcfg.header[col+2]}>
                             { tbcfg.actions.map((a,ak) => <span key={ak} onClick={() => trigger(a,item)}>{a}</span>)}

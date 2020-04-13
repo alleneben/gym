@@ -8,7 +8,7 @@ const DashboardContainer = (props) => {
 
     return(
         <div>
-            
+            Dashboard Under development
         </div>
     )
 

@@ -28,7 +28,13 @@
     padding-left: 100px;
 }
 .actions {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
+    flex-wrap: wrap;
+}
+
+@media screen and (min-width: 35em) {
+    .actions {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+    }
 }

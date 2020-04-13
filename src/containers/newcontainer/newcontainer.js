@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { NewForm, CategoryForm, OrderForm } from '../../forms';
+import { NewForm, CategoryForm, OrderForm, LocationForm } from '../../forms';
 import { DataTable, SCard } from '../../components';
 import { Details } from '../'
 
@@ -32,7 +32,8 @@ const NewContainer = () => {
             new: <NewForm />,
             orders: <OrderForm dbcfg={ordersdbcfg}/>,
             category: <CategoryForm />,
-            undefined: <NewForm/>
+            location: <LocationForm />,
+            undefined: <OrderForm dbcfg={ordersdbcfg}/>
         }
         return cmp[key];
     }

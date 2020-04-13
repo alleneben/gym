@@ -51,8 +51,8 @@ const reducer = (state, action) => {
                             {rid:1,nam:'Items',typ:'updatedom', pay:'pay',act:'list',col:'danger', ico: faUsers},
                             {rid:2,nam:'Orders',typ:'updatedom', pay:[],act:'orders',col:'danger', ico: faUsers},
                             {rid:3,nam:'Category',typ:'updatedom', pay:'pay',act:'category',col:'danger', ico: faUsers},
+                            {rid:4,nam:'Locations',typ:'updatedom', pay:'pay',act:'location',col:'danger', ico: faUsers},
                             // {rid:2,nam:'Bill Members',typ:'updatedom', pay:'pay',act:'bill',col:'', ico: faMoneyBillWaveAlt}
-
                         ]
                     },
                     {
@@ -71,6 +71,12 @@ const reducer = (state, action) => {
                 ...state,
                 newuser: action.action,
                 newuserdd: action.payload
+            }
+        case 'newrecord':
+            return {
+                ...state,
+                newrecord: action.action,
+                records: action.payload
             }
         case 'updatedom':
             return {

@@ -12,15 +12,17 @@ import { api, useStore } from '../../store/';
 
 let form;
 
-const CategoryForm = () => {
+const LocationForm = () => {
     const { state } = useStore()
-    const { onChange, val, handleSubmit, submitting,invalid, opacity } = useForm({s:'controller',a:'save',d:'newcategory_fn',m:'l'},validateform,submitdata,{type:'newrecord',action:'newrecord'})
+    const { onChange, val, handleSubmit, submitting,invalid, opacity } = useForm({s:'controller',a:'save',d:'newlocation_add',m:'l'},validateform,submitdata,{type:'newrecord',action:'newrecord'})
 
+    
+    
     const tbcfg = {
         name:'Items',
-        header:['S/No','Name','Shortcode','Status','Actions'],
-        flds:[{n:'nam',f:'t'},{n:'shc',f:'t'}],
-        dbcfg:{s:'controller',a:'find',m:'l',d:'categories_fn', load:true,props:{'rid':'n','nam':'t','eti':'n'}},
+        header:['S/No','Name','Charge(GHC)','Status','Actions'],
+        flds:[{n:'nam',f:'t'},{n:'chg',f:'d'}],
+        dbcfg:{s:'controller',a:'findmobile',m:'l',d:'location_find', load:true,props:{'rid':'n','nam':'t','eti':'n'}},
         params: {rid:'',nam:'',eti:''},
         actions:['edit'],
         status:['Enabled']
@@ -41,7 +43,8 @@ const CategoryForm = () => {
 
     const buildFormUI = () => {
         const snm = buildield('Name','snmt','text','','tt',onChange,val.snmt || '',true,styles,{width:260,height:30},'',submitting);
-        const fnm = buildield('Short Code','fnmt','text','','tt',onChange,val.fnmt || '',true,styles,{width:260,height:30});
+        const fnm = buildield('Charge','fnmn','number','','tt',onChange,val.fnmn || '',true,styles,{width:260,height:30});
+
         
   
         let formui = <Card className={utilstyle.card} submittingstyle={opacity}>
@@ -52,7 +55,7 @@ const CategoryForm = () => {
             <form onSubmit={handleSubmit}>
                 <CardBody className={utilstyle.cardbody}>
                     <fieldset>
-                        <legend>Category</legend>
+                        <legend>Locations</legend>
                         { snm }{ fnm }
                     </fieldset>
                 </CardBody>
@@ -73,4 +76,4 @@ const CategoryForm = () => {
     )
 }
 
-export default CategoryForm;
+export default LocationForm;
