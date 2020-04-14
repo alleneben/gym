@@ -1,5 +1,9 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import InnerRoutes from '../../routes/inner-routes';
+import { faUser, faUserCog, faSignOutAlt} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 
 import { SideNav, Button } from '../../components';
 import styles from './maincontainer.module.scss';
@@ -23,7 +27,24 @@ const MainContainer = (props) => {
     return(
         <div className={styles.container}>
             <SideNav state={state}/>
-            <nav className={styles.nav}>{state.dd ? state.dd.enm : 'Allen'}</nav>
+            <nav className={styles.nav}>
+            {state.dd ? state.dd.enm : 'Allen'}
+            <div className={styles.dropdown}>
+                <button className={styles.dropbtn}>
+                    <FontAwesomeIcon style={{ fontSize: "1.5rem"}} icon={faUser} />{" "}
+                </button>
+                <div className={styles.dropdowncontent}>
+                    <Link to='/'>
+                        <FontAwesomeIcon style={{ fontSize: "1.5rem"}} icon={faUserCog} />{" "}
+                        Settings
+                    </Link>
+                    <Link to='/'>
+                        <FontAwesomeIcon style={{ fontSize: "1.5rem"}} icon={faSignOutAlt} />{" "}
+                        Logout
+                    </Link>
+                </div>
+                </div>
+            </nav>
             <main className={styles.main}>
                 {
                     props.match.path === '/app/dashboard' ? '' :
