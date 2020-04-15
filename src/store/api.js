@@ -1,8 +1,8 @@
 
 export default {
   fxns: {
-    // endpoint:'http://gym.loc/service/',
-    endpoint:'http://worktimer.kitchencarelimited.com/server/',
+    endpoint:'http://gym.loc/service/',
+    // endpoint:'http://worktimer.kitchencarelimited.com/server/',
     DB: 'orders',
     login: (params,url) => fetch(url,{method: 'post', body: params}).then(res => res.json()),
     base: (params,url) => fetch(url,{method: 'post', body: params}).then(res => res.json()),

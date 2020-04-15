@@ -60,7 +60,7 @@ const CategoryForm = () => {
                     <button type="submit"  className={styles.button}>Submit</button>
                 </CardFooter>
             </form>
-            <SCard><DataTable  tbcfg={tbcfg} reclen={state.records ? state.records.sd.length : 0} /></SCard>,
+            <SCard><DataTable  tbcfg={tbcfg} reclen={state.records ? state.records.sd.length : 0} /></SCard>
         </Card>
 
         return formui;

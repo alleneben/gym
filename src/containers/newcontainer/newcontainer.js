@@ -10,15 +10,7 @@ const NewContainer = () => {
     const { state } = useStore()
   
     
-    const itemstbcfg = {
-        name:'Items',
-        header:['S/No','Meal','Price','Category','Status','Actions'],
-        flds:[{n:'nam',f:'t'},{n:'prc',f:'t'},{n:'cnm',f:'t'}],
-        dbcfg:{s:'controller',a:'find',m:'l',d:'items_fn', load:true,props:{'rid':'n','nam':'t','eti':'n'}},
-        params: {rid:'',nam:''},
-        actions:['edit'],
-        status:['Enabled']
-    }
+    
     const ordersdbcfg = {
         dbcfg:{s:'controller',a:'findmobile',m:'l',d:'orderin_fn', load:true,props:{'rid':'n','ord':'t','tel':'t','eti':'n'}},
         params: {rid:'',nam:'',eti:''}
@@ -26,7 +18,7 @@ const NewContainer = () => {
     const renderdom = (key) => {
         
         let cmp = {
-            list:<SCard><DataTable  tbcfg={itemstbcfg} /></SCard>,
+            // list:<SCard><DataTable  tbcfg={itemstbcfg} /></SCard>,
             edit: 'edit',
             details: <Details />,
             new: <NewForm />,

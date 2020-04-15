@@ -36,7 +36,7 @@ const useForm = (initialstate, validate, submitdata,store) => {
                         } 
                         dispatch({ type:type, payload:rd, action:action }); 
                     } else {
-                        console.log(rd)
+                        // console.log(rd)
                         setinvalid(rd[0])
                     }
                 },err => {setsubmitting(false);setopacity(1);console.log(err)})

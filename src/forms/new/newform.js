@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Field, Card, CardHeader, CardBody, CardFooter } from '../../components';
+import { Field, Card, CardHeader, CardBody, CardFooter, SCard, DataTable } from '../../components';
 
 import utilstyle from '../../asset/scss/util.module.scss';
 import styles from '../../asset/scss/forms.module.scss';
@@ -8,13 +8,23 @@ import styles from '../../asset/scss/forms.module.scss';
 
 import useForm from '../hooks/useform';
 import validateform from '../hooks/validateform';
-import { api } from '../../store/';
+import { api, useStore } from '../../store/';
 
 let form;
 
 const NewForm = () => {
-    const { onChange, val, handleSubmit, submitting,invalid, opacity } = useForm({s:'controller',a:'save',d:'newitem_fn',m:'l'},validateform,submitdata,{type:'newuser',action:'newuser'})
+    const { state } = useStore()
+    const { onChange, val, handleSubmit, submitting,invalid, opacity } = useForm({s:'controller',a:'save',d:'newitem_fn',m:'l'},validateform,submitdata,{type:'newrecord',action:'newrecord'})
 
+    const tbcfg = {
+        name:'Items',
+        header:['S/No','Meal','Price','Category','Status','Actions'],
+        flds:[{n:'nam',f:'t'},{n:'prc',f:'t'},{n:'cnm',f:'t'}],
+        dbcfg:{s:'controller',a:'find',m:'l',d:'items_fn', load:true,props:{'rid':'n','nam':'t','eti':'n'}},
+        params: {rid:'',nam:''},
+        actions:['edit'],
+        status:['Enabled']
+    }
     
     function submitdata(fmvalues){
         try {   
@@ -51,6 +61,7 @@ const NewForm = () => {
                     <button type="submit"  className={styles.button}>Submit</button>
                 </CardFooter>
             </form>
+            <SCard><DataTable  tbcfg={tbcfg} reclen={state.records ? state.records.sd.length : 0} /></SCard>
         </Card>
 
         return formui;
