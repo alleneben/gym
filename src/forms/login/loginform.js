@@ -19,8 +19,7 @@ const LoginForm = () => {
 
 
     function submitdata(bp){
-        try {   
-
+        try {
             const params  = api.utils.formatpost(bp,form);
             return api.fxns.submit(params,api.fxns.endpoint)
         } catch (error) {

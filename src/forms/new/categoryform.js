@@ -16,13 +16,21 @@ const CategoryForm = () => {
     const { state } = useStore()
     const { onChange, val, handleSubmit, submitting,invalid, opacity } = useForm({s:'controller',a:'save',d:'newcategory_fn',m:'l'},validateform,submitdata,{type:'newrecord',action:'newrecord'})
 
-    const tbcfg = {
-        name:'Items',
+    const cfg = {
+        name:'Category',
         header:['S/No','Name','Shortcode','Status','Actions'],
         flds:[{n:'nam',f:'t'},{n:'shc',f:'t'}],
         dbcfg:{s:'controller',a:'find',m:'l',d:'categories_fn', load:true,props:{'rid':'n','nam':'t','eti':'n'}},
         params: {rid:'',nam:'',eti:''},
-        actions:['edit'],
+        actions:[
+            {
+                fn:'edit'
+            }
+        ],
+        fmflds: {
+            snm:{label:'Name',id:'snmt',type:'text',placeholder:'',fieldtype:'tt',onchange:onChange,value:val.snmt || '',required:true,styles:styles,cstyles:{width:260,height:30},cb:'',disabled:submitting},
+            fnm:{label:'Short Code',id:'fnmt',type:'text',placeholder:'',fieldtype:'tt',onchange:onChange,value:val.fnmt || '',required:true,styles:styles,cstyles:{width:260,height:30},cb:'',disabled:''},
+        },
         status:['Enabled']
     }
     
@@ -40,9 +48,14 @@ const CategoryForm = () => {
     }
 
     const buildFormUI = () => {
-        const snm = buildield('Name','snmt','text','','tt',onChange,val.snmt || '',true,styles,{width:260,height:30},'',submitting);
-        const fnm = buildield('Short Code','fnmt','text','','tt',onChange,val.fnmt || '',true,styles,{width:260,height:30});
+        // const snm = buildield('Name','snmt','text','','tt',onChange,val.snmt || '',true,styles,{width:260,height:30},'',submitting);
+        // const fnm = buildield('Short Code','fnmt','text','','tt',onChange,val.fnmt || '',true,styles,{width:260,height:30});
         
+        const { fmflds } = cfg
+        let flds=[]
+        for(let key in fmflds){
+            flds.push(buildield(fmflds[key].label,fmflds[key].id,fmflds[key].type,fmflds[key].placeholder,fmflds[key].fieldtype,onChange,fmflds[key].value,fmflds[key].required,fmflds[key].styles,fmflds[key].cstyles,fmflds[key].cb,fmflds[key].disabled) )
+        }
   
         let formui = <Card className={utilstyle.card} submittingstyle={opacity}>
             <CardHeader className={utilstyle.cardheader}>
@@ -53,14 +66,14 @@ const CategoryForm = () => {
                 <CardBody className={utilstyle.cardbody}>
                     <fieldset>
                         <legend>Category</legend>
-                        { snm }{ fnm }
+                        { flds.map((fld,key) => fld) }
                     </fieldset>
                 </CardBody>
                 <CardFooter className={utilstyle.cardfooter}>
                     <button type="submit"  className={styles.button}>Submit</button>
                 </CardFooter>
             </form>
-            <SCard><DataTable  tbcfg={tbcfg} reclen={state.records ? state.records.sd.length : 0} /></SCard>
+            <SCard><DataTable  tbcfg={cfg} reclen={state.records ? state.records.sd.length : 0} /></SCard>
         </Card>
 
         return formui;

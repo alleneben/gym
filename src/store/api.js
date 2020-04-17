@@ -26,7 +26,6 @@ export default {
 const config = { DB: 'orders' }
 
 const formatpost = (bp,form) => {
-  
   var fm = new FormData(),props={};
   if(form.data){
     fm.append('oid',form.data.rid);
@@ -44,7 +43,6 @@ const formatpost = (bp,form) => {
       }
     }
   }
-
   
   fm.append("s", bp.s);fm.append("a", bp.a);fm.append('m',bp.m);fm.append('d',bp.d);
   fm.append('dd',JSON.stringify(props));fm.append('c',config.DB);
@@ -53,22 +51,21 @@ const formatpost = (bp,form) => {
 }
 
 const formatpostfieldset = (bp,form) => {
-  // console.log(form.props.children[1].props.children[0].props.children);
+  console.log(form.props.children[1].props.children[0].props.children.props.children[1]);
 
-  
-  let formvalues = form.props.children[1].props.children[0].props.children;
+  let formvalues = form.props.children[1].props.children[0].props.children.props.children[1];
   var fm = new FormData(),props={};
 
   if(formvalues.length > 0){
     formvalues.map((fv,key) => {
-      fv.props.children.map((fld,fky) => {
-        if(fld.props.children){
+      // fv.props.children.map((fld,fky) => {
+        // if(fv.props.children){
   
-        } else {
-          fm.append(fld.props.id,fld.props.value);
-          props[fld.props.id]= fld.props.id.substr(fld.props.id.length-1);
-        }
-      })
+        // } else {
+          fm.append(fv.props.id,fv.props.value);
+          props[fv.props.id]= fv.props.id.substr(fv.props.id.length-1);
+        // }
+      // })
     })
   } else {
     // formvalues.map((fv,key) => {
@@ -84,7 +81,6 @@ const formatpostfieldset = (bp,form) => {
       })
     // })
   }
-
 
   fm.append("s", bp.s);fm.append("a", bp.a);fm.append('m',bp.m);fm.append('d',bp.d);
   fm.append('dd',JSON.stringify(props));fm.append('c',config.DB)

@@ -18,13 +18,21 @@ const LocationForm = () => {
 
     
     
-    const tbcfg = {
-        name:'Items',
+    const cfg = {
+        name:'Locations',
         header:['S/No','Name','Charge(GHC)','Status','Actions'],
         flds:[{n:'nam',f:'t'},{n:'chg',f:'d'}],
         dbcfg:{s:'controller',a:'findmobile',m:'l',d:'location_find', load:true,props:{'rid':'n','nam':'t','eti':'n'}},
         params: {rid:'',nam:'',eti:''},
-        actions:['edit'],
+        actions:[
+            {
+                fn:'edit'
+            }
+        ],
+        fmflds: {
+            snm:{label:'Name',id:'snmt',type:'text',placeholder:'',fieldtype:'tt',onchange:onChange,value:val.snmt || '',required:true,styles:styles,cstyles:{width:260,height:30},cb:'',disabled:submitting},
+            fnm:{label:'Charge',id:'fnmn',type:'text',placeholder:'',fieldtype:'tt',onchange:onChange,value:val.fnmn || '',required:true,styles:styles,cstyles:{width:260,height:30},cb:'',disabled:''},
+        },
         status:['Enabled']
     }
     
@@ -42,9 +50,14 @@ const LocationForm = () => {
     }
 
     const buildFormUI = () => {
-        const snm = buildield('Name','snmt','text','','tt',onChange,val.snmt || '',true,styles,{width:260,height:30},'',submitting);
-        const fnm = buildield('Charge','fnmn','number','','tt',onChange,val.fnmn || '',true,styles,{width:260,height:30});
+        // const snm = buildield('Name','snmt','text','','tt',onChange,val.snmt || '',true,styles,{width:260,height:30},'',submitting);
+        // const fnm = buildield('Charge','fnmn','number','','tt',onChange,val.fnmn || '',true,styles,{width:260,height:30});
 
+        const { fmflds } = cfg
+        let flds=[]
+        for(let key in fmflds){
+            flds.push(buildield(fmflds[key].label,fmflds[key].id,fmflds[key].type,fmflds[key].placeholder,fmflds[key].fieldtype,onChange,fmflds[key].value,fmflds[key].required,fmflds[key].styles,fmflds[key].cstyles,fmflds[key].cb,fmflds[key].disabled) )
+        }
         
   
         let formui = <Card className={utilstyle.card} submittingstyle={opacity}>
@@ -56,14 +69,14 @@ const LocationForm = () => {
                 <CardBody className={utilstyle.cardbody}>
                     <fieldset>
                         <legend>Locations</legend>
-                        { snm }{ fnm }
+                        { flds.map((fld,key) => fld) }
                     </fieldset>
                 </CardBody>
                 <CardFooter className={utilstyle.cardfooter}>
                     <button type="submit"  className={styles.button}>Submit</button>
                 </CardFooter>
             </form>
-            <SCard><DataTable  tbcfg={tbcfg} reclen={state.records ? state.records.sd.length : 0} /></SCard>,
+            <SCard><DataTable  tbcfg={cfg} reclen={state.records ? state.records.sd.length : 0} /></SCard>,
         </Card>
 
         return formui;

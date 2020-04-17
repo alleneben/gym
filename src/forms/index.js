@@ -1,5 +1,5 @@
 import { LoginForm, SignupForm } from './login';
-import { NewForm, CategoryForm, OrderForm, LocationForm } from './new';
+import { NewForm, CategoryForm, OrderForm, LocationForm, EditForm } from './new';
 
 export {
     LoginForm,
@@ -7,5 +7,6 @@ export {
     NewForm,
     CategoryForm,
     OrderForm,
-    LocationForm
+    LocationForm,
+    EditForm
 }

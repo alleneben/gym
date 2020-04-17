@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useReducer} from 'react';
-import { faQrcode,faUsers, faUserPlus, faLock /*faCalendarWeek, faSlidersH, faEnvelope, faBars, faTimes, faRunning*/ } from "@fortawesome/free-solid-svg-icons";
+import { faQrcode,faAlignJustify, faUtensils, faMapMarker, faSitemap /*faCalendarWeek, faSlidersH, faEnvelope, faBars, faTimes, faRunning*/ } from "@fortawesome/free-solid-svg-icons";
 
 
 
@@ -45,25 +45,25 @@ const reducer = (state, action) => {
                         rid:1, 
                         nam:'Orders/Items',
                         path:'/app/new',
-                        icon: faUsers,
+                        icon: faUtensils,
                         submenu:[
-                            {rid:0,nam:'Items',typ:'updatedom', pay:'pay',act:'new',col:'primary',ico: faUserPlus},
+                            {rid:0,nam:'Items',typ:'updatedom', pay:'pay',act:'items',col:'primary',ico: faSitemap},
                             // {rid:1,nam:'Items',typ:'updatedom', pay:'pay',act:'list',col:'danger', ico: faUsers},
-                            {rid:2,nam:'Orders',typ:'updatedom', pay:[],act:'orders',col:'danger', ico: faUsers},
-                            {rid:3,nam:'Category',typ:'updatedom', pay:'pay',act:'category',col:'danger', ico: faUsers},
-                            {rid:4,nam:'Locations',typ:'updatedom', pay:'pay',act:'location',col:'danger', ico: faUsers},
+                            {rid:2,nam:'Orders',typ:'updatedom', pay:[],act:'orders',col:'danger', ico: faUtensils},
+                            {rid:3,nam:'Category',typ:'updatedom', pay:'pay',act:'category',col:'danger', ico: faAlignJustify},
+                            {rid:4,nam:'Locations',typ:'updatedom', pay:'pay',act:'location',col:'danger', ico: faMapMarker},
                             // {rid:2,nam:'Bill Members',typ:'updatedom', pay:'pay',act:'bill',col:'', ico: faMoneyBillWaveAlt}
                         ]
                     },
-                    {
-                        rid:2, 
-                        nam:'Logout',
-                        path:'logout',
-                        icon: faLock,
-                        submenu:[
+                    // {
+                    //     rid:2, 
+                    //     nam:'Logout',
+                    //     path:'logout',
+                    //     icon: faLock,
+                    //     submenu:[
                             
-                        ]
-                    }
+                    //     ]
+                    // }
                 ]
             }
         case 'newuser':
@@ -82,7 +82,9 @@ const reducer = (state, action) => {
             return {
                 ...state,
                 updatedom: action.action,
-                data: action.payload
+                data: action.payload,
+                tbname: action.tbname,
+                formstate: action.formstate
             }
         case 'openmodal':  
             return {

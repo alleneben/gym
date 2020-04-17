@@ -42,7 +42,7 @@ const OrderForm = ({ dbcfg }) => {
                 console.log(rd);
             }
         },err => {
-            loader.classList.remove('loading');
+            loader.classList.remove('spinner');
             console.log(err)
         })  
     },[state.fn])
