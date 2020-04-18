@@ -33,7 +33,7 @@ const DataTable  = ({ tbcfg, reclen }) => {
 
 
     const trigger = (action,rec) => { 
-        dispatch({type:'updatedom', payload:rec, action:tbcfg.name.toLowerCase(), tbname: tbcfg.name,formstate:action.fn});
+        dispatch({type:'updatedom', payload:rec, action:action.fn, cfg: tbcfg});
     }
     return (
         <table className={styles.datatable} id="tbl" >

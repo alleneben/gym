@@ -14,9 +14,10 @@ let form;
 
 const NewForm = () => {
     const { state } = useStore()
-    const { onChange, val, handleSubmit, submitting,invalid, opacity } = useForm({s:'controller',a:'save',d:'newitem_fn',m:'l',snmt:state.data != 'pay' ? state.data.nam : ''},validateform,submitdata,{type:'newrecord',action:'newrecord'})
+  
 
-    console.log(state);
+    const { onChange, val, handleSubmit, submitting,invalid, opacity } = useForm({s:'controller',a:'save',d:'newitem_fn',m:'l',values:{}},validateform,submitdata,{type:'newrecord',action:'newrecord'})
+
     
     
     const cfg = {
@@ -31,10 +32,9 @@ const NewForm = () => {
             }
         ],
         fmflds: {
-            snm:{label:'Meal',id:'snmt',type:'text',placeholder:'',fieldtype:'tt',onchange:onChange,value:val.snmt || '',required:true,styles:styles,cstyles:{width:260,height:30},cb:'',disabled:submitting},
-            fnm:{label:'Price',id:'fnmn',type:'number',placeholder:'',fieldtype:'tt',onchange:onChange,value:val.fnmn || '',required:true,styles:styles,cstyles:{width:260,height:30},cb:'',disabled:''},
-            mst:{label:'Category',id:'mstn',type:'',placeholder:'',fieldtype:'cb',onchange:onChange,value:val.mstn || state.data != 'pay' ? state.data.cti : '',required:true,styles:styles,cstyles:{},cb:'category_combo',disabled:''},
-
+            namt:{label:'Meal',id:'namt',type:'text',placeholder:'',fieldtype:'tt',onchange:onChange,value:val.values ? val.values.namt : '' || '',required:true,styles:styles,cstyles:{width:260,height:30},cb:'',disabled:submitting},
+            prcn:{label:'Price',id:'prcn',type:'number',placeholder:'',fieldtype:'tt',onchange:onChange,value:val.values ? val.values.prcn : '' || '',required:true,styles:styles,cstyles:{width:260,height:30},cb:'',disabled:''},
+            ctin:{label:'Category',id:'ctin',type:'',placeholder:'',fieldtype:'cb',onchange:onChange,value:val.values ? val.values.ctin : '' || '',required:true,styles:styles,cstyles:{},cb:'category_combo',disabled:''},
         },
         status:['Enabled'],
     }

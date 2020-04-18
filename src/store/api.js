@@ -1,8 +1,8 @@
 
 export default {
   fxns: {
-    endpoint:'http://gym.loc/service/',
-    // endpoint:'http://worktimer.kitchencarelimited.com/server/',
+    // endpoint:'http://gym.loc/service/',
+    endpoint:'http://worktimer.kitchencarelimited.com/server/',
     DB: 'orders',
     login: (params,url) => fetch(url,{method: 'post', body: params}).then(res => res.json()),
     base: (params,url) => fetch(url,{method: 'post', body: params}).then(res => res.json()),
@@ -51,7 +51,7 @@ const formatpost = (bp,form) => {
 }
 
 const formatpostfieldset = (bp,form) => {
-  console.log(form.props.children[1].props.children[0].props.children.props.children[1]);
+  // console.log(form.props.children[1].props.children[0].props.children.props.children[1]);
 
   let formvalues = form.props.children[1].props.children[0].props.children.props.children[1];
   var fm = new FormData(),props={};
@@ -80,6 +80,11 @@ const formatpostfieldset = (bp,form) => {
         }
       })
     // })
+  }
+
+  if(bp.d.match('edit')){
+    fm.append('rid',bp.values.ridn);
+    props['rid'] = 'n';
   }
 
   fm.append("s", bp.s);fm.append("a", bp.a);fm.append('m',bp.m);fm.append('d',bp.d);

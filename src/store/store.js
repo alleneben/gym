@@ -83,8 +83,7 @@ const reducer = (state, action) => {
                 ...state,
                 updatedom: action.action,
                 data: action.payload,
-                tbname: action.tbname,
-                formstate: action.formstate
+                cfg: action.cfg,
             }
         case 'openmodal':  
             return {

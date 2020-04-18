@@ -12,13 +12,16 @@ import { api, useStore } from '../../store/';
 
 let form;
 
-const EditForm = ({ data }) => {
+const EditForm = () => {
     const { state } = useStore()
-    const { onChange, val, handleSubmit, submitting,invalid, opacity } = useForm({s:'controller',a:'save',d:'newitem_fn',m:'l'},validateform,submitdata,{type:'newrecord',action:'newrecord'})
 
-console.log(state);
+    let dbvalues={ridn:state.data.rid}
+    for(let key in state.cfg.fmflds){
+        dbvalues[key] = state.data[key.substr(0,3)]
+    }
 
-    
+    const { onChange, val, handleSubmit, submitting,invalid, opacity } = useForm({s:'controller',a:'save',d:state.cfg.name.toLowerCase()+'_'+state.updatedom+'_fn',m:'l',values:dbvalues},validateform,submitdata,{type:'updatedom',action:state.cfg.name.toLowerCase()})
+
     function submitdata(fmvalues){
         try {   
             const params  = api.utils.formatpostfieldset(fmvalues,form);
@@ -32,16 +35,53 @@ console.log(state);
         return <Field label={label} id={id} type={type} placeholder={placeholder} fieldtype={fieldtype} onchange={onchange} value={value} required={required} styles={styles} cstyles={cstyles} cb={cb} disabled={disabled}/>
     }
 
+    const itemsui = () => {
+        const flds = {
+            nam:{label:'Meal',id:'namt',type:'text',placeholder:'',fieldtype:'tt',onchange:onChange,value:val.values ? val.values.namt : '' || '',required:true,styles:styles,cstyles:{width:260,height:30},cb:'',disabled:submitting},
+            prc:{label:'Price',id:'prcn',type:'number',placeholder:'',fieldtype:'tt',onchange:onChange,value:val.values ? val.values.prcn : '' || '',required:true,styles:styles,cstyles:{width:260,height:30},cb:'',disabled:''},
+            cti:{label:'Category',id:'ctin',type:'',placeholder:'',fieldtype:'cb',onchange:onChange,value:val.values ? val.values.ctin : '' || '',required:true,styles:styles,cstyles:{},cb:'category_combo',disabled:''},
+
+        }
+        return flds;
+    }
+    const categoryui = () => {
+        const flds = {
+            nam:{label:'Name',id:'namt',type:'text',placeholder:'',fieldtype:'tt',onchange:onChange,value:val.values ? val.values.namt : '' || '',required:true,styles:styles,cstyles:{width:260,height:30},cb:'',disabled:submitting},
+            shc:{label:'Short Code',id:'shct',type:'text',placeholder:'',fieldtype:'tt',onchange:onChange,value:val.values ? val.values.shct : ''|| '',required:true,styles:styles,cstyles:{width:260,height:30},cb:'',disabled:''},
+        }
+        return flds;
+    }
+    const locationui = () => {
+        const flds = {
+            namt:{label:'Name',id:'namt',type:'text',placeholder:'',fieldtype:'tt',onchange:onChange,value:val.values ? val.values.namt : ''|| '',required:true,styles:styles,cstyles:{width:260,height:30},cb:'',disabled:submitting},
+            chgn:{label:'Charge',id:'chgn',type:'text',placeholder:'',fieldtype:'tt',onchange:onChange,value:val.values ? val.values.chgn : '' || '',required:true,styles:styles,cstyles:{width:260,height:30},cb:'',disabled:''},
+        }
+        return flds;
+    }
+
+    const genenrate = (key) => {
+        let ui = {
+            items: itemsui(),
+            category: categoryui(),
+            location: locationui()
+        }
+
+        return ui[key];
+    }
+
     const buildFormUI = () => {
+        const flds = genenrate(state.cfg.name.toLowerCase())
+        // console.log(v);
+        
         // const flds = {
-        //     snm:{label:'Meal',id:'snmt',type:'text',placeholder:'',fieldtype:'tt',onchange:onChange,value:val.snmt || '',required:true,styles:styles,cstyles:{width:260,height:30},cb:'',disabled:submitting},
-        //     mst:{label:'Category',id:'mstn',type:'',placeholder:'',fieldtype:'cb',onchange:onChange,value:val.mstn || '',required:true,styles:styles,cstyles:{},cb:'category_combo',disabled:''},
-        //     fnm:{label:'Price',id:'fnmn',type:'number',placeholder:'',fieldtype:'tt',onchange:onChange,value:val.fnmn || '',required:true,styles:styles,cstyles:{width:260,height:30},cb:'',disabled:''}
+        //     nam:{label:'Meal',id:'namt',type:'text',placeholder:'',fieldtype:'tt',onchange:onChange,value:val.values ? val.values.namt : '' || '',required:true,styles:styles,cstyles:{width:260,height:30},cb:'',disabled:submitting},
+        //     prc:{label:'Price',id:'prcn',type:'number',placeholder:'',fieldtype:'tt',onchange:onChange,value:val.values ? val.values.prcn : '' || '',required:true,styles:styles,cstyles:{width:260,height:30},cb:'',disabled:''},
+        //     cti:{label:'Category',id:'ctin',type:'',placeholder:'',fieldtype:'cb',onchange:onChange,value:val.values ? val.values.ctin : '' || '',required:true,styles:styles,cstyles:{},cb:'category_combo',disabled:''},
+
         // }
-        const { flds } = state
         let fmflds=[]
         for(let key in flds){
-            fmflds.push(buildield(flds[key].label,flds[key].id,flds[key].type,flds[key].placeholder,flds[key].fieldtype,onChange,flds[key].value,flds[key].required,flds[key].styles,flds[key].cstyles,flds[key].cb,flds[key].disabled) )
+            fmflds.push(buildield(flds[key].label,flds[key].id,flds[key].type,flds[key].placeholder,flds[key].fieldtype,flds[key].onchange,flds[key].value,flds[key].required,flds[key].styles,flds[key].cstyles,flds[key].cb,flds[key].disabled) )
         }
   
         let formui = <Card className={utilstyle.card} submittingstyle={opacity}>
@@ -51,8 +91,9 @@ console.log(state);
             <form onSubmit={handleSubmit}>
                 <CardBody className={utilstyle.cardbody}>
                     <fieldset>
-                        <legend>{state.tbname}</legend>
+                        <legend>{state.cfg.name}</legend>
                         { fmflds.map((fld,key) => fld) }
+                        {/* { flds.nam } */}
                     </fieldset>
                 </CardBody>
                 <CardFooter className={utilstyle.cardfooter}>

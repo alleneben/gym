@@ -14,12 +14,12 @@ let form;
 
 const LocationForm = () => {
     const { state } = useStore()
-    const { onChange, val, handleSubmit, submitting,invalid, opacity } = useForm({s:'controller',a:'save',d:'newlocation_add',m:'l'},validateform,submitdata,{type:'newrecord',action:'newrecord'})
+    const { onChange, val, handleSubmit, submitting,invalid, opacity } = useForm({s:'controller',a:'save',d:'newlocation_add',m:'l',values:{}},validateform,submitdata,{type:'newrecord',action:'newrecord'})
 
     
     
     const cfg = {
-        name:'Locations',
+        name:'Location',
         header:['S/No','Name','Charge(GHC)','Status','Actions'],
         flds:[{n:'nam',f:'t'},{n:'chg',f:'d'}],
         dbcfg:{s:'controller',a:'findmobile',m:'l',d:'location_find', load:true,props:{'rid':'n','nam':'t','eti':'n'}},
@@ -30,8 +30,8 @@ const LocationForm = () => {
             }
         ],
         fmflds: {
-            snm:{label:'Name',id:'snmt',type:'text',placeholder:'',fieldtype:'tt',onchange:onChange,value:val.snmt || '',required:true,styles:styles,cstyles:{width:260,height:30},cb:'',disabled:submitting},
-            fnm:{label:'Charge',id:'fnmn',type:'text',placeholder:'',fieldtype:'tt',onchange:onChange,value:val.fnmn || '',required:true,styles:styles,cstyles:{width:260,height:30},cb:'',disabled:''},
+            namt:{label:'Name',id:'namt',type:'text',placeholder:'',fieldtype:'tt',onchange:onChange,value:val.values ? val.values.namt : ''|| '',required:true,styles:styles,cstyles:{width:260,height:30},cb:'',disabled:submitting},
+            chgn:{label:'Charge',id:'chgn',type:'text',placeholder:'',fieldtype:'tt',onchange:onChange,value:val.values ? val.values.chgn : '' || '',required:true,styles:styles,cstyles:{width:260,height:30},cb:'',disabled:''},
         },
         status:['Enabled']
     }

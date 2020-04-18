@@ -14,7 +14,7 @@ let form;
 
 const CategoryForm = () => {
     const { state } = useStore()
-    const { onChange, val, handleSubmit, submitting,invalid, opacity } = useForm({s:'controller',a:'save',d:'newcategory_fn',m:'l'},validateform,submitdata,{type:'newrecord',action:'newrecord'})
+    const { onChange, val, handleSubmit, submitting,invalid, opacity } = useForm({s:'controller',a:'save',d:'newcategory_fn',m:'l',values:{}},validateform,submitdata,{type:'newrecord',action:'newrecord'})
 
     const cfg = {
         name:'Category',
@@ -28,8 +28,8 @@ const CategoryForm = () => {
             }
         ],
         fmflds: {
-            snm:{label:'Name',id:'snmt',type:'text',placeholder:'',fieldtype:'tt',onchange:onChange,value:val.snmt || '',required:true,styles:styles,cstyles:{width:260,height:30},cb:'',disabled:submitting},
-            fnm:{label:'Short Code',id:'fnmt',type:'text',placeholder:'',fieldtype:'tt',onchange:onChange,value:val.fnmt || '',required:true,styles:styles,cstyles:{width:260,height:30},cb:'',disabled:''},
+            namt:{label:'Name',id:'namt',type:'text',placeholder:'',fieldtype:'tt',onchange:onChange,value:val.values ? val.values.namt : '' || '',required:true,styles:styles,cstyles:{width:260,height:30},cb:'',disabled:submitting},
+            shct:{label:'Short Code',id:'shct',type:'text',placeholder:'',fieldtype:'tt',onchange:onChange,value:val.values ? val.values.shct : '' || '',required:true,styles:styles,cstyles:{width:260,height:30},cb:'',disabled:''},
         },
         status:['Enabled']
     }

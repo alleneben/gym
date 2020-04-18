@@ -15,8 +15,6 @@ const useForm = (initialstate, validate, submitdata,store) => {
 
     const {dispatch} = useStore();
 
-// console.log(val);
-
 
     useEffect(() => {
 
@@ -46,7 +44,7 @@ const useForm = (initialstate, validate, submitdata,store) => {
         }
     },[submitting,errors,opacity])
 
-    const onChange = e => setvalues({...val, [e.target.name]: e.target.value})
+    const onChange = e => setvalues({...val, values:{...val.values,[e.target.name]: e.target.value}})
 
     const handleblur = () => {
         const validationerrors = validate(val)

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { NewForm, CategoryForm, OrderForm, LocationForm } from '../../forms';
+import { NewForm, CategoryForm, OrderForm, LocationForm, EditForm } from '../../forms';
 import { Details } from '../'
 
 import { useStore } from '../../store';
@@ -16,12 +16,12 @@ const NewContainer = () => {
     const renderdom = (key) => {
         
         let cmp = {
-            // edit: <EditForm data={state}/>,
+            edit: <EditForm />,
             details: <Details />,
             items: <NewForm />,
             orders: <OrderForm dbcfg={ordersdbcfg}/>,
             category: <CategoryForm />,
-            locations: <LocationForm />,
+            location: <LocationForm />,
             undefined: <OrderForm dbcfg={ordersdbcfg}/>
         }
         return cmp[key];
