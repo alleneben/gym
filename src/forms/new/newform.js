@@ -16,7 +16,7 @@ const NewForm = () => {
     const { state } = useStore()
   
 
-    const { onChange, val, handleSubmit, submitting,invalid, opacity } = useForm({s:'controller',a:'save',d:'newitem_fn',m:'l',values:{}},validateform,submitdata,{type:'newrecord',action:'newrecord'})
+    const { onChange,onFileChange, val, handleSubmit, submitting,invalid, opacity } = useForm({s:'controller',a:'save',d:'newitem_fn',m:'l',values:{}},validateform,submitdata,{type:'newrecord',action:'newrecord'})
 
     
     
@@ -35,6 +35,8 @@ const NewForm = () => {
             namt:{label:'Meal',id:'namt',type:'text',placeholder:'',fieldtype:'tt',onchange:onChange,value:val.values ? val.values.namt : '' || '',required:true,styles:styles,cstyles:{width:260,height:30},cb:'',disabled:submitting},
             prcn:{label:'Price',id:'prcn',type:'number',placeholder:'',fieldtype:'tt',onchange:onChange,value:val.values ? val.values.prcn : '' || '',required:true,styles:styles,cstyles:{width:260,height:30},cb:'',disabled:''},
             ctin:{label:'Category',id:'ctin',type:'',placeholder:'',fieldtype:'cb',onchange:onChange,value:val.values ? val.values.ctin : '' || '',required:true,styles:styles,cstyles:{},cb:'category_combo',disabled:''},
+            imgt:{label:'Image',id:'imgt',type:'file',placeholder:'',fieldtype:'fl',onchange:onFileChange,value:val.values ? val.values.imgt : '' || '',required:true,styles:styles,cstyles:{width:260,height:30,'padding-bottom': 30},cb:'',disabled:''},
+
         },
         status:['Enabled'],
     }
@@ -59,7 +61,7 @@ const NewForm = () => {
         const { fmflds } = cfg
         let flds=[]
         for(let key in fmflds){
-            flds.push(buildield(fmflds[key].label,fmflds[key].id,fmflds[key].type,fmflds[key].placeholder,fmflds[key].fieldtype,onChange,fmflds[key].value,fmflds[key].required,fmflds[key].styles,fmflds[key].cstyles,fmflds[key].cb,fmflds[key].disabled) )
+            flds.push(buildield(fmflds[key].label,fmflds[key].id,fmflds[key].type,fmflds[key].placeholder,fmflds[key].fieldtype,fmflds[key].onchange,fmflds[key].value,fmflds[key].required,fmflds[key].styles,fmflds[key].cstyles,fmflds[key].cb,fmflds[key].disabled) )
         }
         
   

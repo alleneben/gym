@@ -5,7 +5,7 @@ import { faUser, faUserCog, faSignOutAlt} from "@fortawesome/free-solid-svg-icon
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 
-import { SideNav, Button } from '../../components';
+import { SideNav, Button, TopNav } from '../../components';
 import styles from './maincontainer.module.scss';
 import btnstyles from '../../asset/scss/util.module.scss';
 
@@ -45,6 +45,7 @@ const MainContainer = (props) => {
                 </div>
                 </div>
             </nav>
+            {/* <TopNav /> */}
             <main className={styles.main}>
                 {
                     props.match.path === '/app/dashboard' ? '' :

@@ -20,7 +20,7 @@ const EditForm = () => {
         dbvalues[key] = state.data[key.substr(0,3)]
     }
 
-    const { onChange, val, handleSubmit, submitting,invalid, opacity } = useForm({s:'controller',a:'save',d:state.cfg.name.toLowerCase()+'_'+state.updatedom+'_fn',m:'l',values:dbvalues},validateform,submitdata,{type:'updatedom',action:state.cfg.name.toLowerCase()})
+    const { onChange, onFileChange, val, handleSubmit, submitting,invalid, opacity } = useForm({s:'controller',a:'save',d:state.cfg.name.toLowerCase()+'_'+state.updatedom+'_fn',m:'l',values:dbvalues},validateform,submitdata,{type:'updatedom',action:state.cfg.name.toLowerCase()})
 
     function submitdata(fmvalues){
         try {   
@@ -40,6 +40,7 @@ const EditForm = () => {
             nam:{label:'Meal',id:'namt',type:'text',placeholder:'',fieldtype:'tt',onchange:onChange,value:val.values ? val.values.namt : '' || '',required:true,styles:styles,cstyles:{width:260,height:30},cb:'',disabled:submitting},
             prc:{label:'Price',id:'prcn',type:'number',placeholder:'',fieldtype:'tt',onchange:onChange,value:val.values ? val.values.prcn : '' || '',required:true,styles:styles,cstyles:{width:260,height:30},cb:'',disabled:''},
             cti:{label:'Category',id:'ctin',type:'',placeholder:'',fieldtype:'cb',onchange:onChange,value:val.values ? val.values.ctin : '' || '',required:true,styles:styles,cstyles:{},cb:'category_combo',disabled:''},
+            img:{label:'Image',id:'imgt',type:'file',placeholder:'',fieldtype:'fl',onchange:onFileChange,value:val.values ? val.values.imgt : '' || '',required:true,styles:styles,cstyles:{},cb:'',disabled:''},
 
         }
         return flds;

@@ -28,10 +28,10 @@ const Start = (props) => {
         }, err => console.log(err))        
     },[state])
     
-    const route = () => {
-        let t = state.showlogin ? 'showsignup' : 'showlogin';
-        dispatch({ type:t, payload:state.showlogin }); 
-    }
+    // const route = () => {
+    //     let t = state.showlogin ? 'showsignup' : 'showlogin';
+    //     dispatch({ type:t, payload:state.showlogin }); 
+    // }
     
     
     return(

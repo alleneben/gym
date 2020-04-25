@@ -37,6 +37,8 @@ const Field = ({ label,id,type,placeholder,fieldtype,onchange,value,required,sty
                     <input id={id} name={id} type={ type } placeholder={ placeholder } onChange={onchange} value={value} required={required}  style={cstyles} disabled={disabled}/> 
                     : fieldtype === 'ta' ?
                     <textarea id={id} name={id} type={ type } placeholder={ placeholder } onChange={onchange} value={value} required={required} style={cstyles}/>
+                    : fieldtype === 'fl' ?
+                    <input id={id} name={id} type={ type } placeholder={ placeholder } onChange={onchange}  required={required}  style={cstyles} disabled={disabled}/> 
                     :
                     <>
                     <select placeholder={ placeholder } required={required} name={id} onMouseDown={(e)=>onmousedown(e)} onChange={onchange} value={value}>

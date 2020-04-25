@@ -60,11 +60,19 @@ const formatpostfieldset = (bp,form) => {
     formvalues.map((fv,key) => {
       // fv.props.children.map((fld,fky) => {
         // if(fv.props.children){
-  
-        // } else {
+        if(fv.props.id === 'imgt'){
+          if(fv.props.value === undefined) return
+          fm.append(fv.props.id,fv.props.value.name);
+          // console.log(fv.props.value);
+          
+          
+          fm.append('file',fv.props.value);
+          props[fv.props.id]= fv.props.id.substr(fv.props.id.length-1);
+        }
+        else {
           fm.append(fv.props.id,fv.props.value);
           props[fv.props.id]= fv.props.id.substr(fv.props.id.length-1);
-        // }
+        }
       // })
     })
   } else {

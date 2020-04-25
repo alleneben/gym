@@ -15,7 +15,7 @@ let form;
 const LoginForm = () => {
 
 
-    const { onChange, val, handleSubmit,invalid,opacity } = useForm({s:'controller',a:'auth',d:'security_login',m:'l'},validateform,submitdata,{type:'loginsuccess',action:'loginsuccess'})
+    const { onChange, val, handleSubmit,invalid,opacity } = useForm({s:'controller',a:'auth',d:'security_login',m:'l',values:{}},validateform,submitdata,{type:'loginsuccess',action:'loginsuccess'})
 
 
     function submitdata(bp){
@@ -34,8 +34,8 @@ const LoginForm = () => {
     }
 
     const buildlogin = () => {
-        const unm = buildfield('Email','emlt','email','','tt',val.emlt || '',true,styles);
-        const pwd = buildfield('Password','pwdt','password','','tt',val.pwdt || '',true,styles);
+        const unm = buildfield('Email','emlt','email','','tt',val.values ? val.values.emlt : '' || '',true,styles);
+        const pwd = buildfield('Password','pwdt','password','','tt',val.values ? val.values.pwdt : ''|| '',true,styles);
 
         let formui = <Card className={loginstyles.card} submittingstyle={opacity}>
             <CardHeader className={loginstyles.cardheader}>

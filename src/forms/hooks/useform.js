@@ -46,6 +46,11 @@ const useForm = (initialstate, validate, submitdata,store) => {
 
     const onChange = e => setvalues({...val, values:{...val.values,[e.target.name]: e.target.value}})
 
+    const onFileChange = e => {
+        setvalues({...val, values:{...val.values,imgt: e.target.files[0] }})
+    }
+
+    
     const handleblur = () => {
         const validationerrors = validate(val)
         seterrors(validationerrors)
@@ -60,7 +65,7 @@ const useForm = (initialstate, validate, submitdata,store) => {
         setopacity(0.3)
     }
 
-    return { onChange, val, handleSubmit, handleblur, errors, submitting, invalid, opacity, type, action }
+    return { onChange,onFileChange, val, handleSubmit, handleblur, errors, submitting, invalid, opacity, type, action }
 
 }
 
