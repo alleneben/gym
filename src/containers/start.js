@@ -18,6 +18,8 @@ const Start = (props) => {
 
         api.fxns.submit(fm,api.fxns.endpoint)
         .then(rd=> {
+           console.log(rd);
+           
             let out = rd;
             if(out.success){
                 if (out.sd.lst) {

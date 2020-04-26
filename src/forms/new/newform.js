@@ -22,8 +22,8 @@ const NewForm = () => {
     
     const cfg = {
         name:'Items',
-        header:['S/No','Meal','Price','Category','Status','Actions'],
-        flds:[{n:'nam',f:'t'},{n:'prc',f:'t'},{n:'cnm',f:'t'}],
+        header:['S/No','Image','Meal','Price','Category','Status','Actions'],
+        flds:[{n:'img',f:'i'},{n:'nam',f:'t'},{n:'prc',f:'t'},{n:'cnm',f:'t'}],
         dbcfg:{s:'controller',a:'find',m:'l',d:'items_fn', load:true,props:{'rid':'n','nam':'t','eti':'n'}},
         params: {rid:'',nam:''},
         actions:[
@@ -81,7 +81,6 @@ const NewForm = () => {
                     <button type="submit"  className={styles.button}>Submit</button>
                 </CardFooter>
             </form>
-            <SCard><DataTable  tbcfg={cfg} reclen={state.records ? state.records.sd[0].rid : 0} /></SCard>
         </Card>
 
         return formui;
@@ -90,6 +89,8 @@ const NewForm = () => {
     return (
         <>
            { form = buildFormUI() } 
+           <DataTable  tbcfg={cfg} reclen={state.records ? state.records.sd[0].rid : 0} />
+
         </>
     )
 }

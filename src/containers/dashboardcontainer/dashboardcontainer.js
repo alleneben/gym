@@ -1,7 +1,7 @@
 import React from 'react';
 
-
-
+import styles from './styles.module.scss';
+import { DataTable } from '../../components';
 
 const DashboardContainer = (props) => {
 
@@ -24,11 +24,25 @@ const DashboardContainer = (props) => {
         })
     }
 
+    const cfg = {
+        name:'Items',
+        header:['S/No','Image','Meal','Price','Category','Status','Actions'],
+        flds:[{n:'img',f:'i'},{n:'nam',f:'t'},{n:'prc',f:'t'},{n:'cnm',f:'t'}],
+        dbcfg:{s:'controller',a:'find',m:'l',d:'items_fn', load:true,props:{'rid':'n','nam':'t','eti':'n'}},
+        params: {rid:'',nam:''},
+        actions:[
+            {
+                fn:'edit'                
+            }
+        ],
+        status:['Enabled'],
+    }
     return(
-        <div>
-            Dashboard Under development
-            <button onClick={() => pay()}>Pay</button>
-        </div>
+        // <DataTable  tbcfg={cfg} />
+        <>
+            Dashboard
+        </>
+
     )
 
 }

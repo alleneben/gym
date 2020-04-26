@@ -13,7 +13,7 @@ const initialstate = {
 
 const reducer = (state, action) => {
     // console.log(state);
-    // console.log(action);
+    // console.log(action.payload);
     
     
     
@@ -26,9 +26,11 @@ const reducer = (state, action) => {
             return {
                 showsignup: !action.action
             }
-        case 'loginsuccess':            
+        case 'loginsuccess':           
             return {
-                loginsuccess: action.action
+                ...state,
+                loginsuccess: action.payload,
+                // showlogin: !state.showlogin
             }
         case 'sess':
             return {

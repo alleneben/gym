@@ -9,13 +9,14 @@ import loginstyles from './login.module.scss';
 
 import useForm from '../hooks/useform';
 import validateform from '../hooks/validateform';
-import { api } from '../../store/';
+import { api, useStore } from '../../store/';
 
 let form;
 const LoginForm = () => {
-
+    const {state, dispatch} = useStore()
 
     const { onChange, val, handleSubmit,invalid,opacity } = useForm({s:'controller',a:'auth',d:'security_login',m:'l',values:{}},validateform,submitdata,{type:'loginsuccess',action:'loginsuccess'})
+console.log(state);
 
 
     function submitdata(bp){

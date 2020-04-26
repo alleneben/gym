@@ -24,6 +24,8 @@ const useForm = (initialstate, validate, submitdata,store) => {
 
                 submitdata(val)
                 .then(rd => {
+                    // console.log(rd);
+                    
                     setsubmitting(false)
                     setopacity(1)
                     if (rd.success) {                                       

@@ -1,3 +1,108 @@
+.container {
+  display: flex;
+  flex-direction: column;
+}
+.wrapper {
+  margin-bottom: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-top: 0.5rem;
+  overflow-x: auto;
+  margin-left: 2rem;
+  padding-right: 2rem;
+}
+.tablewrapper {
+  display: inline-block;
+  vertical-align: middle;
+  min-width: 100%;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+  border-bottom-width: 1px;
+  border-color: #edf2f7;
+  border-radius: 0.5rem;
+}
+.table {
+  min-width: 100%;
+  border-collapse: collapse;
+}
+.th {
+  padding: 0.75rem 1.5rem;
+  border-bottom-width: 1px;
+  border-color: #edf2f7;
+  background-color: #f7fafc;
+  text-align: left;
+  font-size: .75rem;
+  line-height: 1rem;
+  font-weight: 300;
+  color: #1a202c;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.tbody {
+  background-color: white;
+}
+.td {
+  padding: 1rem 1.5rem;
+  white-space: nowrap;
+  border-bottom-width: 1px;
+  border-color: #edf2f7;
+}
+.tdmain {
+  font-size: .875rem;
+  line-height: 1.25rem;
+  color: #1a202c;
+}
+.tdsub {
+  color: #a0aec0;
+  line-height: 1.25rem;
+  font-size: .875rem;
+}
+tr {
+  border-bottom: solid 1px;
+  border-color: #edf2f7;
+}
+.active {
+  padding: 0 1rem;
+  display: inline-flex;
+  line-height: 1.25rem;
+  font-size: .75rem;
+  font-weight: 600;
+  border-radius: 9999px;
+  background-color: #f0fff4;
+  color: #276749;
+}
+.inactive {
+  padding: 0 1rem;
+  display: inline-flex;
+  line-height: 1.25rem;
+  font-size: .75rem;
+  font-weight: 600;
+  border-radius: 9999px;
+  background-color: #fff5f5;
+  color: #9b2c2c;
+}
+.imgcontainer {
+  display: flex;
+  align-items: center;
+}
+.imgwrapper {
+  flex-shrink: 0;
+  height: 2.5rem;
+  width: 2.5rem;
+}
+.img {
+  height: 2.5rem;
+  width: 2.5rem;
+  border-radius: 99999px;
+}
+.action {
+  cursor: pointer;
+  color: #5a67d8;
+  text-transform: capitalize;
+  &:hover {
+    color: #3c366b;
+  }
+ 
+}
 /* table {
 
     table-layout: fixed;
@@ -28,7 +133,7 @@
     overflow: hidden;
     text-overflow: ellipsis;
   } */
-  table.loading tbody:after {
+  /* table.loading tbody:after {
     position: absolute;
     top: 0;
     left: 0;
@@ -40,4 +145,4 @@
     background-repeat: no-repeat;
     background-size: 50px 50px;
     content: "";
-}
+} */
