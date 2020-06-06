@@ -6,8 +6,8 @@ import { faQrcode,faAlignJustify, faUtensils, faMapMarker, faSitemap /*faCalenda
 
 const StoreContext = createContext();
 const initialstate = {
-    showlogin: true,
-    showsignup: false,
+    showlogin: false,
+    showsignup: true,
     loginsuccess: false
 };
 

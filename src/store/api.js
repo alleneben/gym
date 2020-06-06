@@ -1,4 +1,3 @@
-
 export default {
   fxns: {
     endpoint:'http://gym.loc/service/',
@@ -24,6 +23,9 @@ export default {
   }
 }
 const config = { DB: 'orders' }
+
+const config ={DB: 'gym'}
+
 
 const formatpost = (bp,form) => {
   var fm = new FormData(),props={};
