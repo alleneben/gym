@@ -18,8 +18,6 @@ const DataTable  = ({ tbcfg, reclen }) => {
         const params  = api.utils.formatpostsearch(tbcfg);
         api.fxns.submit(params,api.fxns.endpoint)
         .then(rd => {
-            console.log(rd);
-            
             tbl.classList.remove('spinner');
             if(rd.success){ 
                 setdata(rd.sd)
@@ -41,7 +39,7 @@ const DataTable  = ({ tbcfg, reclen }) => {
         let img = !!name ? api.fxns.endpoint+'/img/'+name : api.fxns.endpoint+'/img/vt.jpeg';
         return <div className={styles.imgcontainer}>
             <div className={styles.imgwrapper}>
-                <img src={img} alt="sample.pnh" className={styles.img}/>
+                <img src={img} alt="sample.png" className={styles.img}/>
             </div>
         </div>
     }
@@ -85,10 +83,10 @@ const DataTable  = ({ tbcfg, reclen }) => {
                                                   )
                                               })
                                           }
-                                          <td id={styles.td} data-column={tbcfg.header[col+1]}>
+                                          <td className={styles.td} data-column={tbcfg.header[col+1]}>
                                               { tbcfg.status.map((s,sk)=> <span key={sk} className={styles.active}>{s}</span>) }
                                           </td>
-                                          <td id={styles.td} data-column={tbcfg.header[col+2]}>
+                                          <td className={styles.td} data-column={tbcfg.header[col+2]}>
                                               { tbcfg.actions.map((action,actionkey) => <span key={actionkey} className={styles.action} onClick={() => trigger(action,item)}>{action.fn}</span>)}
                                           </td>
                                       </tr>

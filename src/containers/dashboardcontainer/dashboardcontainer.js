@@ -28,19 +28,23 @@ const DashboardContainer = (props) => {
         name:'Items',
         header:['S/No','Image','Meal','Price','Category','Status','Actions'],
         flds:[{n:'img',f:'i'},{n:'nam',f:'t'},{n:'prc',f:'t'},{n:'cnm',f:'t'}],
-        dbcfg:{s:'controller',a:'find',m:'l',d:'items_fn', load:true,props:{'rid':'n','nam':'t','eti':'n'}},
+        dbcfg:{s:'controller',a:'findmobile',m:'l',d:'items_fn', load:true,props:{'rid':'n','nam':'t','eti':'n'}},
         params: {rid:'',nam:''},
         actions:[
             {
                 fn:'edit'                
+            },
+            {
+                fn:'add'
             }
         ],
         status:['Enabled'],
     }
     return(
-        // <DataTable  tbcfg={cfg} />
+        
         <>
             Dashboard
+            <DataTable  tbcfg={cfg} />
         </>
 
     )
