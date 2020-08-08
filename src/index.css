@@ -5,7 +5,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #0a263b;
-  background: #F4F5F7;
+  background: #f5f5f6;
 }
 
 :root {
@@ -191,9 +191,9 @@ fieldset {
   transform: translateX(0%);
   transition: all var(--speed) ease;
 }
-.menu-secondary-exit {
+/* .menu-secondary-exit {
 
-}
+} */
 .menu-secondary-exit-active {
   transform: translateX(110%);
   transition: all var(--speed) ease;

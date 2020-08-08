@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 
 
 import styles from './start.module.scss';
-import { LoginForm } from '../forms';
+import { LoginForm, OrderForm } from '../forms';
 
 import { api,useStore } from '../store';
 
@@ -46,6 +46,7 @@ const Start = (props) => {
                 </ul> */}
                 {/* <button className={styles.login} onClick={() => route()}>{state.showlogin ? 'Sign Up' : 'Sign In'}</button> */}
             </nav>
+            
             <div className={styles.landing}>
                 <div className={styles.left}>
                     <h2>Inspire Online Order System</h2>

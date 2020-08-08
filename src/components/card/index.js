@@ -8,6 +8,7 @@ import StatsCard from './statscard';
 import CreditCard from './creditcard';
 
 import OrderCard from './ordercard';
+import Order from './order';
 import Preview from './preview';
 
 export {
@@ -21,5 +22,6 @@ export {
     CreditCard,
 
     OrderCard,
+    Order,
     Preview
 }

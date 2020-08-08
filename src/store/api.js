@@ -24,8 +24,6 @@ export default {
 }
 const config = { DB: 'orders' }
 
-const config ={DB: 'gym'}
-
 
 const formatpost = (bp,form) => {
   var fm = new FormData(),props={};

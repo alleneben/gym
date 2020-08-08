@@ -9,5 +9,6 @@ export {
     CategoryForm,
     OrderForm,
     LocationForm,
-    EditForm
+    EditForm,
+
 }

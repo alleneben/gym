@@ -1,5 +1,5 @@
 import React,{ useEffect, useState } from 'react';
-import { OrderCard, Modal, Preview } from '../../components';
+import { Order, Modal, Preview } from '../../components';
 import './orderform.scss';
 
 import { api } from '../../store';
@@ -53,7 +53,7 @@ const OrderForm = ({ dbcfg }) => {
 
 
     const content = () => {
-        return data.map((rd,key) =>  <OrderCard key={key} {...rd} open={() => open(rd)} />)
+        return data.map((rd,key) =>  <Order key={key} sno={key} {...rd} open={() => open(rd)} />)
     }
 
     const items = (data) => {    

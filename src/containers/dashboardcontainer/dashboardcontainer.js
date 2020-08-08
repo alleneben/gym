@@ -2,6 +2,7 @@ import React from 'react';
 
 import styles from './styles.module.scss';
 import { DataTable } from '../../components';
+import { OrderForm } from '../../forms';
 
 const DashboardContainer = (props) => {
 
@@ -36,15 +37,23 @@ const DashboardContainer = (props) => {
             },
             {
                 fn:'add'
+            },
+            {
+                fn:'del'
             }
         ],
         status:['Enabled'],
+    }
+    const ordersdbcfg = {
+        dbcfg:{s:'controller',a:'findmobile',m:'l',d:'orderin_fn', load:true,props:{'rid':'n','ord':'t','tel':'t','eti':'n'}},
+        params: {rid:'',nam:'',eti:''}
     }
     return(
         
         <>
             Dashboard
-            <DataTable  tbcfg={cfg} />
+            {/* <DataTable  tbcfg={cfg} /> */}
+            <OrderForm dbcfg={ordersdbcfg}/>
         </>
 
     )

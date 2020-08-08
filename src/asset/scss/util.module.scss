@@ -267,27 +267,98 @@
         transition: all 0.5s ease-out;
     }
 }
+
+.order {
+    background: #ffffff;
+    margin-bottom: 2em;
+    flex: 1 0 200px;
+    box-sizing: border-box;
+    margin: 1rem .30em;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    cursor: pointer;
+    transition: all 0.5 ease-out;
+    border-radius: 5px;
+    padding: 0.4rem 0.7rem;
+
+    .top, .bottom {
+        display: flex;
+        justify-content: flex-end;
+        font-size: 0.6rem;
+        color: #a5b5bd;
+        font-weight: 700;
+    }
+    .center {
+        display: flex;
+        justify-content: flex-start;
+    }
+    .serial,.status {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0.1rem 0.6rem;
+        font-weight: 700;
+    }
+    .serial {
+        font-size: 0.9rem;
+    }
+    .status {
+        font-size: 0.7rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        span {
+            color: #cbd5e0;
+            font-size: 0.6rem;
+            margin: 0;
+        }
+    }
+    .ordercontent {
+        padding: 1.4em;
+
+        h2 {
+            margin-top: 0;
+            margin-bottom: .5em;
+            font-weight: 500;
+        }
+
+        p {
+            font-size: 1rem;
+            font-weight: 300;
+        }
+    }
+    &:hover {
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        transition: all 0.5s ease-out;
+    }
+}
 .cooking {
     background: #ecc94b;
 }
 .moved {
-    background: #fc8181;
+    background-color: #ebf4ff;
+    color: #667eea;
 }
 
 .delivered {
-    background: #76BA1B;
-    color: white;
+    background-color: #f4f7fa;
+    color: #b1c5d1;
+}
+.notpaid {
+    background-color: #fef6e9;
+    color: #f7ac32;
 }
 .paid {
-    background:  #90cdf4;
+    background-color: #e9faf0;
+    color: #2ed268;
 }
 .canceled {
-    background:  #c53030;
-    color: white;
+    background:  #fcebea;
+    color: #e53632;
 }
 .closed {
-    background:  #97266d;
-    color: white;
+    color: #e53632;
+    background-color: #fcebea;
 }
 .datatable {
     border-collapse: collapse;
